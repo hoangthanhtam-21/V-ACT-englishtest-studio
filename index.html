@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống Đánh giá năng lực - Ngoại ngữ</title>
+    <style>
+        :root {
+            --primary-color: #B5523B;
+            --primary-hover: #9e4631;
+            --accent-color: #F2D6A2;
+            --accent-hover: #e3c58b;
+            --text-color: #333333;
+            --bg-color: #f4f4f9;
+            --font-main: 'Times New Roman', Times, serif;
+            --border-radius: 8px;
+        }
+
+        body {
+            font-family: var(--font-main);
+            font-size: 16px;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .js-enabled section:not(.active) {
+            display: none;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        fieldset {
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            margin-bottom: 24px;
+            padding: 24px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        legend {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .full-width {
+                grid-column: 1 / -1;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            font-family: var(--font-main);
+            font-size: 16px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(181, 82, 59, 0.2);
+        }
+
+        .question-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-bottom: 12px;
+            padding: 12px;
+            background-color: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+        }
+        
+        @media (min-width: 768px) {
+            .question-row {
+                grid-template-columns: 80px 1fr 1fr;
+                align-items: center;
+                padding: 10px 15px;
+            }
+            .question-row .form-group {
+                margin-bottom: 0;
+            }
+        }
+
+        .question-row h4 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 16px;
+        }
+
+        .mobile-label {
+            display: block;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-label {
+                display: none;
+            }
+        }
+
+        .btn {
+            font-family: var(--font-main);
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px 28px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 140px;
+            text-decoration: none;
+        }
+        
+        .btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(242, 214, 162, 0.8);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-primary:disabled {
+            background-color: #d89688;
+            cursor: not-allowed;
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: #5a281c;
+        }
+
+        .btn-accent:hover:not(:disabled) {
+            background-color: var(--accent-hover);
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            justify-content: center;
+        }
+
+        .test-preview {
+            background: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .test-preview h2, .test-preview h3 {
+            color: var(--primary-color);
+        }
+
+        .question-block {
+            margin-bottom: 25px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        
+        @media (min-width: 600px) {
+            .options-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (min-width: 900px) {
+            .options-grid { grid-template-columns: 1fr 1fr 1fr 1fr; }
+        }
+
+        .split-screen {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            min-height: 600px;
+        }
+
+        @media (min-width: 900px) {
+            .split-screen {
+                flex-direction: row;
+                height: calc(100vh - 200px);
+            }
+        }
+
+        .pane {
+            flex: 1;
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 24px;
+            overflow-y: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 6px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .progress-container {
+            margin-bottom: 24px;
+            background-color: white;
+            border-radius: 12px;
+            height: 30px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+            border: 2px solid var(--accent-color);
+        }
+
+        .progress-bar {
+            background-color: var(--primary-color);
+            height: 100%;
+            width: 0%;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            mix-blend-mode: difference;
+        }
+
+        .student-question {
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 2px dashed #eee;
+        }
+
+        .student-option {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 6px;
+            transition: background 0.2s, transform 0.1s;
+            border: 1px solid transparent;
+        }
+
+        .student-option:hover {
+            background-color: #fcf9f2;
+            border-color: var(--accent-color);
+        }
+
+        .student-option input[type="radio"] {
+            margin-right: 12px;
+            margin-top: 4px;
+            transform: scale(1.3);
+            cursor: pointer;
+        }
+
+        .test-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+        }
+
+        .result-screen {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .score-circle {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            font-weight: bold;
+            margin: 0 auto 30px auto;
+            border: 12px solid var(--accent-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .explanation-box {
+            background-color: #fefcf8;
+            border-left: 5px solid var(--primary-color);
+            padding: 15px 20px;
+            margin-top: 15px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            display: none;
+            text-align: left;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .explanation-box.visible {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .correct-answer-text {
+            font-weight: bold;
+            color: #2e7d32;
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .modal-content h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .system-message {
+            padding: 20px;
+            background: #fff3cd;
+            border: 1px solid #ffe69c;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .meta-tag {
+            background-color: #fcece9;
+            color: var(--primary-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 14px;
+            border: 1px solid #f2d2cc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hệ Thống Thiết Kế Bài Thi ĐGNL Ngoại Ngữ</h1>
+    </header>
+
+    <main>
+        <div id="system-error" class="system-message"></div>
+
+        <!-- Trang 1: Cài đặt đề thi -->
+        <section id="page-1" class="active">
+            <form id="teacher-form">
+                
+                <!-- CÂU 31 - 35 -->
+                <fieldset>
+                    <legend>Câu 31 – 35: Dạng điền vào chỗ trống</legend>
+                    
+                    <div class="question-row">
+                        <h4>Câu 31</h4>
+                        <div class="form-group">
+                            <label class="mobile-label">Chủ đề</label>
+                            <input type="text" id="q31-topic" placeholder="Chủ đề (Context)" value="Business" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="mobile-label">Thể loại</label>
+                            <input type="text" id="q31-type" placeholder="Thể loại (Grammar)" value="Word form" required>
+                        </div>
+                    </div>
+                    
+                    <div class="question-row">
+                        <h4>Câu 32</h4>
+                        <div class="form-group">
+                            <label class="mobile-label">Chủ đề</label>
+                            <input type="text" id="q32-topic" placeholder="Chủ đề (Context)" value="Daily routine" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="mobile-label">Thể loại</label>
+                            <input type="text" id="q32-type" placeholder="Thể loại (Grammar)" value="Simple present" required>
+                        </div>
+                    </div>
+
+                    <div class="question-row">
+                        <h4>Câu 33</h4>
+                        <div class="form-group">
+                            <label class="mobile-label">Chủ đề</label>
+                            <input type="text" id="q33-topic" placeholder="Chủ đề" value="AI ethics" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="mobile-label">Thể loại</label>
+                            <input type="text" id="q33-type" placeholder="Thể loại" value="Quantifiers" required>
+                        </div>
+                    </div>
+
+                    <div class="question-row">
+                        <h4>Câu 34</h4>
+                        <div class="form-group">
+                            <label class="mobile-label">Chủ đề</label>
+                            <input type="text" id="q34-topic" placeholder="Chủ đề" value="Deforestation" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="mobile-label">Thể loại</label>
+                            <input type="text" id="q34-type" placeholder="Thể loại" value="Comparison" required>
+                        </div>
+                    </div>
+
+                    <div class="question-row">
+                        <h4>Câu 35</h4>
+                        <div class="form-group">
+                            <label class="mobile-label">Chủ đề</label>
+                            <input type="text" id="q35-topic" placeholder="Chủ đề" value="Family" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="mobile-label">Thể loại</label>
+                            <input type="text" id="q35-type" placeholder="Thể loại" value="Collocation" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- CÂU 36 - 40 -->
+                <fieldset>
+                    <legend>Câu 36 – 40: Dạng Tìm lỗi sai</legend>
+                    
+                    <div class="question-row">
+                        <h4>Câu 36</h4>
+                        <div class="form-group">
+                            <label class="mobile-label">Chủ đề</label>
+                            <input type="text" id="q36-topic" placeholder="Chủ đề" value="Smart home" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="mobile-label">Thể loại</label>
+                            <input type="text" id="q36-type" placeholder="Thể loại" value="S-V agreement" required>
+                        </div>
+                    </div>
+                    
+                    <div class="question-row">
+                        <h4>Câu 37</h4>
+                        <div class="form-group">
+                            <label class="mobile-label">Chủ đề</label>
+                            <input type="text" id="q37-topic" placeholder="Chủ đề" value="Social issue" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="mobile-label">Thể loại</label>
+                            <input type="text" id="q37-type" placeholder="Thể loại" value="Article" required>
+                        </div>
+                    </div>
+
+                    <div class="question-row">
+                        <h4>Câu 38</h4>
+                        <div class="form-group">
+                            <label class="mobile-label">Chủ đề</label>
+                            <input type="text" id="q38-topic" placeholder="Chủ đề" value="Diet" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="mobile-label">Thể loại</label>
+                            <input type="text" id="q38-type" placeholder="Thể loại" value="Pronoun reference" required>
+                        </div>
+                    </div>
+
+                    <div class="question-row">
+                        <h4>Câu 39</h4>
+                        <div class="form-group">
+                            <label class="mobile-label">Chủ đề</label>
+                            <input type="text" id="q39-topic" placeholder="Chủ đề" value="Travel" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="mobile-label">Thể loại</label>
+                            <input type="text" id="q39-type" placeholder="Thể loại" value="Causative form" required>
+                        </div>
+                    </div>
+
+                    <div class="question-row">
+                        <h4>Câu 40</h4>
+                        <div class="form-group">
+                            <label class="mobile-label">Chủ đề</label>
+                            <input type="text" id="q40-topic" placeholder="Chủ đề" value="Climate change" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="mobile-label">Thể loại</label>
+                            <input type="text" id="q40-type" placeholder="Thể loại" value="Subjunctive" required>
+                        </div>
+                    </div>
+                </fieldset>
+                
+                <!-- CÂU 41 - 45 -->
+                <fieldset>
+                    <legend>Câu 41 – 45: Dạng tìm câu đồng nghĩa</legend>
+                    
+                    <div class="question-row">
+                        <h4>Câu 41</h4>
+                        <div class="form-group">
+                            <label class="mobile-label">Chủ đề</label>
+                            <input type="text" id="q41-topic" placeholder="Chủ đề" value="Education" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="mobile-label">Thể loại</label>
+                            <input type="text" id="q41-type" placeholder="Thể loại" value="So/such/too/enough" required>
+                        </div>
+                    </div>
+                    
+                    <div class="question-row">
+                        <h4>Câu 42</h4>
+                        <div class="form-group">
+                            <label class="mobile-label">Chủ đề</label>
+                            <input type="text" id="q42-topic" placeholder="Chủ đề" value="Tourism" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="mobile-label">Thể loại</label>
+                            <input type="text" id="q42-type" placeholder="Thể loại" value="Reported speech" required>
+                        </div>
+                    </div>
+
+                    <div class="question-row">
+                        <h4>Câu 43</h4>
+                        <div class="form-group">
+                            <label class="mobile-label">Chủ đề</label>
+                            <input type="text" id="q43-topic" placeholder="Chủ đề" value="Cybersecurity" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="mobile-label">Thể loại</label>
+                            <input type="text" id="q43-type" placeholder="Thể loại" value="Conditional type 2" required>
+                        </div>
+                    </div>
+
+                    <div class="question-row">
+                        <h4>Câu 44</h4>
+                        <div class="form-group">
+                            <label class="mobile-label">Chủ đề</label>
+                            <input type="text" id="q44-topic" placeholder="Chủ đề" value="Environment" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="mobile-label">Thể loại</label>
+                            <input type="text" id="q44-type" placeholder="Thể loại" value="Passive voice" required>
+                        </div>
+                    </div>
+
+                    <div class="question-row">
+                        <h4>Câu 45</h4>
+                        <div class="form-group">
+                            <label class="mobile-label">Chủ đề</label>
+                            <input type="text" id="q45-topic" placeholder="Chủ đề" value="Transport" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="mobile-label">Thể loại</label>
+                            <input type="text" id="q45-type" placeholder="Thể loại" value="Comparison transformation" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- CÂU 46 - 52 (Đoạn văn) -->
+                <fieldset>
+                    <legend>Câu 46 – 52: Đoạn văn đọc hiểu 1</legend>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="p4-level">Độ khó (Khung châu Âu)</label>
+                            <select id="p4-level">
+                                <option value="B1">B1</option>
+                                <option value="B2" selected>B2</option>
+                                <option value="C1">C1</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="p4-words">Số lượng từ</label>
+                            <input type="text" id="p4-words" value="300 - 350 từ" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="p4-topic">Chủ đề bài đọc</label>
+                            <input type="text" id="p4-topic" value="Aviation Law & Passenger Rights" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="p4-link">Link bài báo mẫu</label>
+                            <input type="url" id="p4-link" value="https://e.vnexpress.net/news">
+                        </div>
+                        <div class="form-group">
+                            <label for="p4-ref">Bài tham khảo (Dán văn bản)</label>
+                            <textarea id="p4-ref" rows="2" placeholder="Dán bài tham khảo vào đây..."></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="p4-details">Chi tiết câu hỏi</label>
+                            <textarea id="p4-details" rows="3">Target: "They" (para 2), "accountability" (para 5), NOT stated in para 4.</textarea>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- CÂU 53 - 60 (Đoạn văn) -->
+                <fieldset>
+                    <legend>Câu 53 – 60: Đoạn văn đọc hiểu 2</legend>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="p5-level">Độ khó (Khung châu Âu)</label>
+                            <select id="p5-level">
+                                <option value="B1">B1</option>
+                                <option value="B2">B2</option>
+                                <option value="C1" selected>C1</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="p5-words">Số lượng từ</label>
+                            <input type="text" id="p5-words" value="300 - 350 từ" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="p5-topic">Chủ đề bài đọc</label>
+                            <input type="text" id="p5-topic" value="Environment & Urban Management" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="p5-link">Link bài báo mẫu</label>
+                            <input type="url" id="p5-link" placeholder="https://...">
+                        </div>
+                        <div class="form-group">
+                            <label for="p5-ref">Bài tham khảo</label>
+                            <textarea id="p5-ref" rows="3"></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="p5-details">Chi tiết câu hỏi</label>
+                            <textarea id="p5-details" rows="3">Target: "its" (para 1), "around the clock" (para 3), inference para 3, relationship para 3 & 4.</textarea>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button type="button" id="btn-generate" class="btn btn-primary">Tạo Đề Thi</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Trang 2: Sản phẩm đề thi -->
+        <section id="page-2">
+            <div class="toolbar">
+                <button type="button" id="btn-edit" class="btn btn-accent">Sửa lại</button>
+                <button type="button" id="btn-download" class="btn btn-accent">Tải về (Word)</button>
+                <button type="button" id="btn-online-test" class="btn btn-primary">Tạo bài kiểm tra trực tuyến</button>
+            </div>
+            <div id="test-preview-container" class="test-preview">
+                <div class="loading-state" style="text-align: center; padding: 40px;">
+                    Vui lòng tạo đề từ Trang 1.
+                </div>
+            </div>
+        </section>
+
+        <!-- Trang 3: Làm bài trực tuyến -->
+        <section id="page-3">
+            <div class="progress-container">
+                <div id="student-progress-bar" class="progress-bar"></div>
+                <div id="student-progress-text" class="progress-text">0 / 30</div>
+            </div>
+            
+            <div id="test-active-view" class="split-screen">
+                <!-- Cột trái: Bài đọc -->
+                <div class="pane" id="pane-left">
+                    <div style="text-align:center; padding: 50px;">Đang tải dữ liệu...</div>
+                </div>
+                <!-- Cột phải (hoặc toàn màn hình): Câu hỏi -->
+                <div class="pane" id="pane-right">
+                    <div style="text-align:center; padding: 50px;">Đang tải dữ liệu...</div>
+                </div>
+            </div>
+
+            <div id="test-result-view" class="result-screen" style="display:none;">
+                <h2>Kết quả bài làm</h2>
+                <div class="score-circle" id="final-score">0/30</div>
+                <div class="toolbar" style="box-shadow: none; padding: 0;">
+                    <button type="button" id="btn-view-explain" class="btn btn-primary">Xem giải thích</button>
+                    <button type="button" id="btn-retry" class="btn btn-accent">Làm lại</button>
+                    <button type="button" id="btn-exit" class="btn btn-accent">Thoát</button>
+                </div>
+                <div id="explanation-container" style="text-align: left; margin-top: 40px; display: none;">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="review-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3><span class="spinner" id="review-spinner"></span> Đang phân tích Thể loại & Chủ đề...</h3>
+            <ul id="review-logs" style="line-height: 2; list-style-type: none; padding-left: 0;">
+            </ul>
+        </div>
+    </div>
+
+    <!-- Script 1: Sinh dữ liệu linh động theo Form dựa trên Ngữ pháp & Ngữ cảnh -->
+    <script>
+        const NEWLINE = String.fromCharCode(10);
+        let testDatabase = [];
+
+        function getField(id, type) {
+            try {
+                const val = document.getElementById('q' + id + '-' + type);
+                return val ? val.value.trim() : '';
+            } catch (e) { return ''; }
+        }
+
+        // --- CỖ MÁY MÔ PHỎNG AI (MOCK ENGINE) ---
+        // Hàm này sẽ dùng Thể loại (để định hình 4 đáp án ngữ pháp) và Chủ đề (để viết câu mang ý nghĩa đó)
+        function generateSmartSentence(id, groupType) {
+            const topic = getField(id, 'topic');
+            const type = getField(id, 'type').toLowerCase();
+            
+            // Theo đúng yêu cầu của người dùng, Q31 và Q32 phải ra chính xác ví dụ:
+            if (id === 31 && topic.toLowerCase() === 'business' && type.includes('word form')) {
+                return {
+                    text: 'Many small businesses failed because they were not ______ competitive in the global market.',
+                    options: { A: 'economy', B: 'economics', C: 'economically', D: 'economical' },
+                    answer: 'C',
+                    explain: 'Cần một trạng từ (economically) để bổ nghĩa cho tính từ "competitive".'
+                };
+            }
+            if (id === 32 && topic.toLowerCase() === 'daily routine' && type.includes('simple present')) {
+                return {
+                    text: 'I usually __________ yoga at 6 AM every day, but today I overslept.',
+                    options: { A: 'do', B: 'am doing', C: 'did', D: 'have done' },
+                    answer: 'A',
+                    explain: 'Dùng thì hiện tại đơn (do) với trạng từ chỉ tần suất "usually" cho thói quen.'
+                };
+            }
+
+            // Với các câu khác, hệ thống sẽ cố gắng sinh ra một câu liên quan đến Chủ đề (topic)
+            // nhưng kiểm tra Cấu trúc ngữ pháp (type)
+            if (groupType === 'blank') {
+                if (type.includes('quantifier') || type.includes('much') || type.includes('many')) {
+                    return {
+                        text: `Despite the recent focus on ${topic}, researchers believe that _______ progress has been made so far.`,
+                        options: { A: 'few', B: 'a little', C: 'many', D: 'a few' }, answer: 'B',
+                        explain: 'Progress là danh từ không đếm được, dùng a little cho nghĩa khẳng định.'
+                    };
+                }
+                if (type.includes('compar')) {
+                    return {
+                        text: `The impact of ${topic} is considered one of __________ threats to our society today.`,
+                        options: { A: 'greater', B: 'the greatest', C: 'as great as', D: 'great' }, answer: 'B',
+                        explain: 'Cấu trúc "one of + the + so sánh nhất + N".'
+                    };
+                }
+                if (type.includes('collocation')) {
+                    return {
+                        text: `When discussing issues related to ${topic}, it is important to _______ attention to all underlying factors.`,
+                        options: { A: 'pay', B: 'make', C: 'do', D: 'take' }, answer: 'A',
+                        explain: 'Collocation chuẩn: pay attention to (chú ý tới).'
+                    };
+                }
+                // Default fallback for blank
+                return {
+                    text: `When it comes to ${topic}, the new policies were implemented ______ to ensure maximum efficiency.`,
+                    options: { A: 'quick', B: 'quickly', C: 'quickness', D: 'quicker' }, answer: 'B',
+                    explain: 'Cần trạng từ bổ nghĩa cho động từ "implemented".'
+                };
+            }
+            
+            if (groupType === 'error') {
+                if (type.includes('agreement') || type.includes('s-v')) {
+                    return {
+                        text: `The latest research on ${topic} (A) indicate that the (B) majority of people (C) prefer traditional (D) methods.`,
+                        options: { A: 'indicate', B: 'majority', C: 'prefer', D: 'methods' }, answer: 'A',
+                        explain: 'Chủ ngữ "The latest research" số ít nên động từ phải là "indicates".'
+                    };
+                }
+                if (type.includes('pronoun')) {
+                    return {
+                        text: `A well-designed approach to ${topic} provides the community with the resources (C) they needs.`,
+                        options: { A: 'well-designed', B: 'provides', C: 'they', D: 'needs' }, answer: 'C',
+                        explain: 'Đại từ thay thế cho "approach" (số ít) phải là "it", không phải "they".'
+                    };
+                }
+                if (type.includes('causative')) {
+                    return {
+                        text: `Before the conference on ${topic}, they had their presentation materials (C) prepare and printed by professionals.`,
+                        options: { A: 'Before', B: 'had', C: 'prepare', D: 'by' }, answer: 'C',
+                        explain: 'Cấu trúc truyền khiến: have + object + V3/ed -> "prepared".'
+                    };
+                }
+                if (type.includes('subjunctive')) {
+                    return {
+                        text: `Given the risks of ${topic}, it is vital that every nation (B) cuts down on harmful emissions immediately.`,
+                        options: { A: 'Given', B: 'cuts down', C: 'emissions', D: 'immediately' }, answer: 'B',
+                        explain: 'Cấu trúc giả định (It is vital that + S + V-nguyên mẫu) -> "cut down".'
+                    };
+                }
+                // Default fallback for error
+                return {
+                    text: `The expert in ${topic} (A) believes that analyzing (B) this field is crucial (C) for achieving (D) long-term success.`,
+                    options: { A: 'believes', B: 'analyzing', C: 'crucial', D: 'achieving' }, answer: 'A',
+                    explain: 'Ví dụ giả định lỗi sai ngữ pháp cho câu này.'
+                };
+            }
+
+            if (groupType === 'rewrite') {
+                if (type.includes('so') || type.includes('such') || type.includes('enough')) {
+                    return {
+                        text: `The training course on ${topic} is too advanced for beginners to follow.`,
+                        options: { 
+                            A: `It is such an advanced course on ${topic} that beginners can follow it.`, 
+                            B: `The course on ${topic} is not basic enough for beginners to follow.`, 
+                            C: `The course on ${topic} is so advanced that beginners can attend it.`, 
+                            D: `Beginners are mature enough to follow the ${topic} course.` 
+                        }, answer: 'B', explain: 'Cấu trúc "too + adj + for sb" = "not + adj_trái_nghĩa + enough + for sb".'
+                    };
+                }
+                if (type.includes('report')) {
+                    return {
+                        text: `"Please don't ignore the warnings about ${topic}," the expert said to the public.`,
+                        options: { 
+                            A: `The expert advised the public to ignore the warnings about ${topic}.`, 
+                            B: `The expert requested the public not to ignore the warnings about ${topic}.`, 
+                            C: `The expert begged the public for ignoring the warnings about ${topic}.`, 
+                            D: `The expert invited the public to ignore the warnings about ${topic}.` 
+                        }, answer: 'B', explain: 'Câu tường thuật mệnh lệnh: S + requested + O + not to V.'
+                    };
+                }
+                if (type.includes('condition')) {
+                    return {
+                        text: `Because they lack knowledge about ${topic}, they face many difficulties.`,
+                        options: { 
+                            A: `If they didn't lack knowledge about ${topic}, they wouldn't face many difficulties.`, 
+                            B: `If they had knowledge about ${topic}, they wouldn't face many difficulties.`, 
+                            C: `Unless they had knowledge about ${topic}, they wouldn't face many difficulties.`, 
+                            D: `If they have knowledge about ${topic}, they won't face many difficulties.` 
+                        }, answer: 'B', explain: 'Câu điều kiện loại 2 diễn tả sự thật trái hiện tại.'
+                    };
+                }
+                if (type.includes('passive')) {
+                    return {
+                        text: `The organization has launched several campaigns regarding ${topic}.`,
+                        options: { 
+                            A: `Several campaigns regarding ${topic} have been launched by the organization.`, 
+                            B: `Several campaigns regarding ${topic} has been launched by the organization.`, 
+                            C: `The organization have been launched by several campaigns regarding ${topic}.`, 
+                            D: `Several campaigns regarding ${topic} have launched by the organization.` 
+                        }, answer: 'A', explain: 'Bị động hiện tại hoàn thành (số nhiều): have been + V3.'
+                    };
+                }
+                if (type.includes('compar')) {
+                    return {
+                        text: `The old policy on ${topic} was not as effective as the new one.`,
+                        options: { 
+                            A: `The new policy on ${topic} is less effective than the old one.`, 
+                            B: `The old policy on ${topic} is more effective than the new one.`, 
+                            C: `The new policy on ${topic} is more effective than the old one.`, 
+                            D: `The old policy on ${topic} is as effective as the new one.` 
+                        }, answer: 'C', explain: 'So sánh "not as... as" chuyển thành so sánh hơn (more... than).'
+                    };
+                }
+                // Default rewrite
+                return {
+                    text: `It is essential to understand the core concept of ${topic}.`,
+                    options: { A: `Option A (Incorrect restatement)`, B: `Option B (Correctly applies ${type})`, C: `Option C (Incorrect meaning)`, D: `Option D (Grammar error)` }, answer: 'B',
+                    explain: `Áp dụng đúng cấu trúc ${type}.`
+                };
+            }
+        }
+
+        // Hàm tạo đoạn văn bản giả lập (Passage)
+        function generatePassage(level, words, topic, refText, details) {
+            let paragraph = '<strong>[Hệ thống tự động biên soạn văn bản Reading]</strong><br><br>';
+            paragraph += 'Đoạn văn này được xây dựng dựa trên chủ đề "<strong>' + topic + '</strong>". ';
+            paragraph += 'Độ khó từ vựng và ngữ pháp được điều chỉnh ở mức <strong>' + level + '</strong>. ';
+            paragraph += 'Số lượng từ được kiểm soát trong khoảng <strong>' + words + '</strong>.<br><br>';
+            
+            if (refText && refText.trim() !== "") {
+                paragraph += '<em>Văn bản gốc tham khảo: "' + refText.substring(0, 50) + '..."</em><br><br>';
+            }
+            paragraph += 'Yêu cầu kiểm tra đọc hiểu: ' + details + '.<br>';
+            paragraph += '<em>(Trong môi trường tích hợp API thật, đây sẽ là một đoạn văn tiếng Anh hoàn chỉnh được AI viết ra xoay quanh bối cảnh ' + topic + ' nhằm phục vụ trả lời 7 câu hỏi bên cạnh).</em>';
+            
+            return paragraph;
+        }
+
+        // Xây dựng CSDL
+        function buildDynamicTestDatabase() {
+            try {
+                const p4_level = document.getElementById('p4-level').value;
+                const p4_words = document.getElementById('p4-words').value;
+                const p4_topic = document.getElementById('p4-topic').value;
+                const p4_ref = document.getElementById('p4-ref').value;
+                const p4_details = document.getElementById('p4-details').value;
+
+                const p5_level = document.getElementById('p5-level').value;
+                const p5_words = document.getElementById('p5-words').value;
+                const p5_topic = document.getElementById('p5-topic').value;
+                const p5_ref = document.getElementById('p5-ref').value;
+                const p5_details = document.getElementById('p5-details').value;
+
+                let q31 = generateSmartSentence(31, 'blank');
+                let q32 = generateSmartSentence(32, 'blank');
+                let q33 = generateSmartSentence(33, 'blank');
+                let q34 = generateSmartSentence(34, 'blank');
+                let q35 = generateSmartSentence(35, 'blank');
+                
+                let q36 = generateSmartSentence(36, 'error');
+                let q37 = generateSmartSentence(37, 'error');
+                let q38 = generateSmartSentence(38, 'error');
+                let q39 = generateSmartSentence(39, 'error');
+                let q40 = generateSmartSentence(40, 'error');
+
+                let q41 = generateSmartSentence(41, 'rewrite');
+                let q42 = generateSmartSentence(42, 'rewrite');
+                let q43 = generateSmartSentence(43, 'rewrite');
+                let q44 = generateSmartSentence(44, 'rewrite');
+                let q45 = generateSmartSentence(45, 'rewrite');
+
+                testDatabase = [
+                    {
+                        groupId: 1,
+                        instruction: 'Questions 31 – 35: Choose a suitable word or phrase (A, B, C, or D) to fill in each blank.',
+                        passage: '',
+                        questions: [
+                            { id: 31, meta: `[${getField(31,'topic')} - ${getField(31,'type')}]`, text: q31.text, options: q31.options, answer: q31.answer, explain: q31.explain },
+                            { id: 32, meta: `[${getField(32,'topic')} - ${getField(32,'type')}]`, text: q32.text, options: q32.options, answer: q32.answer, explain: q32.explain },
+                            { id: 33, meta: `[${getField(33,'topic')} - ${getField(33,'type')}]`, text: q33.text, options: q33.options, answer: q33.answer, explain: q33.explain },
+                            { id: 34, meta: `[${getField(34,'topic')} - ${getField(34,'type')}]`, text: q34.text, options: q34.options, answer: q34.answer, explain: q34.explain },
+                            { id: 35, meta: `[${getField(35,'topic')} - ${getField(35,'type')}]`, text: q35.text, options: q35.options, answer: q35.answer, explain: q35.explain }
+                        ]
+                    },
+                    {
+                        groupId: 2,
+                        instruction: 'Questions 36 – 40: Each of the following sentences has one error (A, B, C, or D). Find it.',
+                        passage: '',
+                        questions: [
+                            { id: 36, meta: `[${getField(36,'topic')} - ${getField(36,'type')}]`, text: q36.text, options: q36.options, answer: q36.answer, explain: q36.explain },
+                            { id: 37, meta: `[${getField(37,'topic')} - ${getField(37,'type')}]`, text: q37.text, options: q37.options, answer: q37.answer, explain: q37.explain },
+                            { id: 38, meta: `[${getField(38,'topic')} - ${getField(38,'type')}]`, text: q38.text, options: q38.options, answer: q38.answer, explain: q38.explain },
+                            { id: 39, meta: `[${getField(39,'topic')} - ${getField(39,'type')}]`, text: q39.text, options: q39.options, answer: q39.answer, explain: q39.explain },
+                            { id: 40, meta: `[${getField(40,'topic')} - ${getField(40,'type')}]`, text: q40.text, options: q40.options, answer: q40.answer, explain: q40.explain }
+                        ]
+                    },
+                    {
+                        groupId: 3,
+                        instruction: 'Questions 41 – 45: Which of the following best restates each of the given sentences?',
+                        passage: '',
+                        questions: [
+                            { id: 41, meta: `[${getField(41,'topic')} - ${getField(41,'type')}]`, text: q41.text, options: q41.options, answer: q41.answer, explain: q41.explain },
+                            { id: 42, meta: `[${getField(42,'topic')} - ${getField(42,'type')}]`, text: q42.text, options: q42.options, answer: q42.answer, explain: q42.explain },
+                            { id: 43, meta: `[${getField(43,'topic')} - ${getField(43,'type')}]`, text: q43.text, options: q43.options, answer: q43.answer, explain: q43.explain },
+                            { id: 44, meta: `[${getField(44,'topic')} - ${getField(44,'type')}]`, text: q44.text, options: q44.options, answer: q44.answer, explain: q44.explain },
+                            { id: 45, meta: `[${getField(45,'topic')} - ${getField(45,'type')}]`, text: q45.text, options: q45.options, answer: q45.answer, explain: q45.explain }
+                        ]
+                    },
+                    {
+                        groupId: 4,
+                        instruction: 'Questions 46 – 52: Read the passage carefully.',
+                        passage: generatePassage(p4_level, p4_words, p4_topic, p4_ref, p4_details),
+                        questions: [
+                            { id: 46, meta: '[Main Idea]', text: `What is the passage mainly about regarding ${p4_topic}?`, options: { A: 'Irrelevant topic', B: `The core aspects of ${p4_topic}`, C: 'A minor detail', D: 'Something not stated' }, answer: 'B', explain: 'Bám sát chủ đề chính.' },
+                            { id: 47, meta: '[Detail]', text: `According to paragraph 1, what is stated about ${p4_topic}?`, options: { A: 'Fact 1', B: 'Fact 2', C: 'Correct detail found in text', D: 'Fact 4' }, answer: 'C', explain: 'Chi tiết nằm ở dòng số 2.' },
+                            { id: 48, meta: '[Reference]', text: 'What does the word " They " refer to?', options: { A: 'Object A', B: 'Object B', C: 'Object C', D: 'The main subject' }, answer: 'D', explain: 'Thay thế cho chủ ngữ liền trước.' },
+                            { id: 49, meta: '[Detail]', text: 'Under what condition does X happen?', options: { A: 'Correct condition', B: 'Wrong condition 1', C: 'Wrong condition 2', D: 'Wrong condition 3' }, answer: 'A', explain: 'Dựa trên đoạn số 3.' },
+                            { id: 50, meta: '[NOT stated]', text: 'Which of the following is NOT mentioned?', options: { A: 'Mentioned A', B: 'Mentioned B', C: 'Not mentioned C', D: 'Mentioned D' }, answer: 'C', explain: 'Không có thông tin trong bài.' },
+                            { id: 51, meta: '[Vocabulary]', text: 'What is the word " highlight " closest in meaning to?', options: { A: 'emphasize', B: 'hide', C: 'remove', D: 'ignore' }, answer: 'A', explain: 'Từ vựng theo ngữ cảnh.' },
+                            { id: 52, meta: '[Inference]', text: 'What can be inferred about the future of this issue?', options: { A: 'It will disappear', B: 'It requires more research', C: 'It is fully solved', D: 'It has no impact' }, answer: 'B', explain: 'Suy luận logic từ luận điểm cuối bài.' }
+                        ]
+                    },
+                    {
+                        groupId: 5,
+                        instruction: 'Questions 53 – 60: Read the passage carefully.',
+                        passage: generatePassage(p5_level, p5_words, p5_topic, p5_ref, p5_details),
+                        questions: [
+                            { id: 53, meta: '[Title]', text: 'The best title of the passage can be _______.', options: { A: 'Title A', B: `Understanding ${p5_topic}`, C: 'Title C', D: 'Title D' }, answer: 'B', explain: 'Tiêu đề bao quát ý toàn bài.' },
+                            { id: 54, meta: '[Detail]', text: 'According to paragraph 1, what is stated about the achievement?', options: { A: 'Option A', B: 'Option B', C: 'Correct answer C', D: 'Option D' }, answer: 'C', explain: 'Thông tin ở câu đầu.' },
+                            { id: 55, meta: '[Reference]', text: 'The word " its " refers to _______.', options: { A: 'Target noun', B: 'Wrong noun 1', C: 'Wrong noun 2', D: 'Wrong noun 3' }, answer: 'A', explain: 'Đại từ sở hữu thay thế cho danh từ chính.' },
+                            { id: 56, meta: '[Function]', text: 'Why did the author mention this specific term?', options: { A: 'To provide an example', B: 'To contrast', C: 'To conclude', D: 'To confuse' }, answer: 'A', explain: 'Mục đích minh họa.' },
+                            { id: 57, meta: '[Vocabulary]', text: 'The phrase can be replaced by _______.', options: { A: 'Correct synonym', B: 'Antonym', C: 'Irrelevant word', D: 'Made up word' }, answer: 'A', explain: 'Đồng nghĩa.' },
+                            { id: 58, meta: '[Inference]', text: 'It can be inferred that _______.', options: { A: 'Statement A', B: 'Statement B', C: 'Logical deduction', D: 'Statement D' }, answer: 'C', explain: 'Suy luận từ bài.' },
+                            { id: 59, meta: '[NOT stated]', text: 'Paragraph 4 does NOT mention _______.', options: { A: 'Stated A', B: 'Stated B', C: 'Stated C', D: 'Unstated D' }, answer: 'D', explain: 'Không có trong đoạn 4.' },
+                            { id: 60, meta: '[Synthesis]', text: 'The relationship between paragraph 3 and paragraph 4 is that _______.', options: { A: 'Para 3 explains Para 4', B: 'Para 3 contrasts Para 4', C: 'Cause and effect', D: 'Para 3 introduces, Para 4 details' }, answer: 'D', explain: 'Mối liên hệ cấu trúc đoạn.' }
+                        ]
+                    }
+                ];
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    </script>
+
+    <!-- Script 2: Control and Execution (Nút bấm và Luồng hoạt động) -->
+    <script>
+        function navigateTo(sectionId) {
+            try {
+                const sections = document.querySelectorAll('main > section');
+                if (!sections || sections.length === 0) return;
+                sections.forEach(sec => sec.classList.remove('active'));
+                const target = document.getElementById(sectionId);
+                if (target) {
+                    target.classList.add('active');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            } catch (error) {
+                showSystemError('Lỗi chuyển trang. Vui lòng tải lại.');
+            }
+        }
+
+        function showSystemError(msg) {
+            const errDiv = document.getElementById('system-error');
+            if (errDiv) {
+                errDiv.innerText = msg;
+                errDiv.style.display = 'block';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            try { document.documentElement.classList.add('js-enabled'); } catch (error) {}
+            
+            const btnGenerate = document.getElementById('btn-generate');
+            const btnEdit = document.getElementById('btn-edit');
+            const btnDownload = document.getElementById('btn-download');
+            const btnOnlineTest = document.getElementById('btn-online-test');
+            const modal = document.getElementById('review-modal');
+            const logsContainer = document.getElementById('review-logs');
+
+            async function runExpertReview() {
+                return new Promise((resolve) => {
+                    modal.classList.add('active');
+                    logsContainer.innerHTML = '';
+                    
+                    const checks = [
+                        'Phân tích Chủ đề (Ngữ cảnh) & Thể loại (Ngữ pháp)...',
+                        'Mô phỏng AI sinh câu hỏi từ vựng/ngữ pháp...',
+                        'Kiểm tra độ tin cậy và phân hóa (B1-C1)...',
+                        'Sẵn sàng xuất đề thi.'
+                    ];
+                    
+                    let index = 0;
+                    const interval = setInterval(() => {
+                        if (index < checks.length) {
+                            const li = document.createElement('li');
+                            li.style.color = '#2e7d32'; 
+                            li.style.fontWeight = 'bold';
+                            li.innerText = '✓ ' + checks[index];
+                            logsContainer.appendChild(li);
+                            index++;
+                        } else {
+                            clearInterval(interval);
+                            const spinner = document.getElementById('review-spinner');
+                            if(spinner) spinner.style.display = 'none';
+                            
+                            const finalMsg = document.createElement('li');
+                            finalMsg.style.color = 'var(--primary-color)';
+                            finalMsg.style.fontWeight = 'bold';
+                            finalMsg.style.marginTop = '15px';
+                            finalMsg.innerText = '➜ Đã tạo xong đề! Đang chuyển trang...';
+                            logsContainer.appendChild(finalMsg);
+                            
+                            setTimeout(() => {
+                                modal.classList.remove('active');
+                                resolve(true);
+                            }, 1200);
+                        }
+                    }, 400);
+                });
+            }
+
+            if (btnGenerate) {
+                btnGenerate.addEventListener('click', async () => {
+                    try {
+                        buildDynamicTestDatabase(); 
+                        
+                        btnGenerate.disabled = true;
+                        await runExpertReview();
+                        
+                        renderTestPreview();
+                        navigateTo('page-2');
+                    } catch (error) {
+                        showSystemError('Lỗi trong quá trình tạo đề: ' + error.message);
+                    } finally {
+                        btnGenerate.disabled = false;
+                        const spinner = document.getElementById('review-spinner');
+                        if(spinner) spinner.style.display = 'inline-block';
+                    }
+                });
+            }
+
+            if (btnEdit) { btnEdit.addEventListener('click', () => { navigateTo('page-1'); }); }
+            if (btnDownload) { btnDownload.addEventListener('click', () => { exportHTMLToWord(); }); }
+            if (btnOnlineTest) {
+                btnOnlineTest.addEventListener('click', () => {
+                    initOnlineTest();
+                    navigateTo('page-3');
+                });
+            }
+
+            function renderTestPreview() {
+                const previewContainer = document.getElementById('test-preview-container');
+                if (!previewContainer) return;
+                
+                let html = [];
+                html.push('<div style="text-align: center; margin-bottom: 30px;"><h2>1.2. TIẾNG ANH (BẢN MÔ PHỎNG DỮ LIỆU ĐỘNG)</h2></div>');
+
+                testDatabase.forEach(group => {
+                    html.push('<h3>' + group.instruction + '</h3>');
+                    if (group.passage) {
+                        html.push('<div style="margin-bottom: 20px; padding: 20px; background: #fdfdfd; border: 1px solid #e0e0e0; border-radius: 4px; line-height: 1.8;">' + group.passage + '</div>');
+                    }
+                    
+                    group.questions.forEach(q => {
+                        html.push('<div class="question-block">');
+                        html.push('<strong>Câu ' + q.id + ': <span class="meta-tag">' + q.meta + '</span></strong><br>');
+                        html.push(q.text);
+                        html.push('<div class="options-grid">');
+                        for (const [key, val] of Object.entries(q.options)) {
+                            html.push('<div>' + key + '. ' + val + '</div>');
+                        }
+                        html.push('</div></div>');
+                    });
+                });
+
+                previewContainer.innerHTML = html.join('');
+            }
+
+            function exportHTMLToWord() {
+                const previewElement = document.getElementById('test-preview-container');
+                if(!previewElement) return;
+                const sourceHTML = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Đề Thi ĐGNL Ngoại Ngữ</title></head><body>" + previewElement.innerHTML + "</body></html>";
+                const source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(sourceHTML);
+                const fileDownload = document.createElement('a');
+                document.body.appendChild(fileDownload);
+                fileDownload.href = source;
+                fileDownload.download = 'De_Thi.doc';
+                fileDownload.click();
+                document.body.removeChild(fileDownload);
+            }
+        });
+    </script>
+
+    <!-- Script 3: Online Test Logic (Sửa lỗi chia đôi màn hình) -->
+    <script>
+        let currentTestGroupIndex = 0;
+        let studentAnswers = {};
+        
+        function initOnlineTest() {
+            currentTestGroupIndex = 0;
+            studentAnswers = {};
+            document.getElementById('test-active-view').style.display = '';
+            document.getElementById('test-result-view').style.display = 'none';
+            renderTestGroup(currentTestGroupIndex);
+            updateProgressBar();
+        }
+
+        function renderTestGroup(index) {
+            if (index < 0 || index >= testDatabase.length) return;
+            const group = testDatabase[index];
+            const paneLeft = document.getElementById('pane-left');
+            const paneRight = document.getElementById('pane-right');
+            
+            // XỬ LÝ GIAO DIỆN TOÀN MÀN HÌNH (CÂU 31-45)
+            if (group.passage && group.passage.trim() !== '') {
+                // Có bài đọc -> Bật chế độ Split Screen
+                paneLeft.style.display = 'block';
+                paneRight.style.maxWidth = 'none';
+                paneRight.style.margin = '0';
+                paneLeft.innerHTML = '<h3>Passage</h3><div style="font-size: 16px; line-height: 1.8; text-align: justify;">' + group.passage + '</div>';
+            } else {
+                // Không có bài đọc -> Tắt cột trái, căn giữa cột phải để nhìn giống Full Screen
+                paneLeft.style.display = 'none';
+                paneRight.style.maxWidth = '800px';
+                paneRight.style.margin = '0 auto';
+            }
+
+            let rightHtml = [];
+            rightHtml.push('<h3>' + group.instruction + '</h3>');
+            group.questions.forEach(q => {
+                rightHtml.push('<div class="student-question" id="sq-' + q.id + '">');
+                rightHtml.push('<strong>Câu ' + q.id + ': <span class="meta-tag">' + q.meta + '</span></strong><br> ' + q.text);
+                rightHtml.push('<div style="margin-top: 15px;">');
+                for (const [key, val] of Object.entries(q.options)) {
+                    const isChecked = studentAnswers[q.id] === key ? 'checked' : '';
+                    rightHtml.push('<label class="student-option"><input type="radio" name="q-' + q.id + '" value="' + key + '" ' + isChecked + '><span><strong>' + key + '.</strong> ' + val + '</span></label>');
+                }
+                rightHtml.push('</div></div>');
+            });
+
+            const isLastGroup = index === testDatabase.length - 1;
+            rightHtml.push('<div class="test-controls">');
+            rightHtml.push('<button type="button" class="btn btn-accent" id="btn-prev-group" ' + (index === 0 ? 'disabled' : '') + '>Quay lại</button>');
+            rightHtml.push('<button type="button" class="btn btn-primary" id="btn-next-group" disabled>' + (isLastGroup ? 'Nộp bài' : 'Tiếp theo') + '</button>');
+            rightHtml.push('</div>');
+
+            paneRight.innerHTML = rightHtml.join('');
+
+            group.questions.forEach(q => {
+                document.querySelectorAll('input[name="q-' + q.id + '"]').forEach(radio => {
+                    radio.addEventListener('change', (e) => {
+                        studentAnswers[q.id] = e.target.value;
+                        checkGroupCompletion(group);
+                        updateProgressBar();
+                    });
+                });
+            });
+
+            document.getElementById('btn-prev-group').addEventListener('click', () => {
+                if (currentTestGroupIndex > 0) renderTestGroup(--currentTestGroupIndex);
+            });
+            document.getElementById('btn-next-group').addEventListener('click', () => {
+                if (currentTestGroupIndex < testDatabase.length - 1) renderTestGroup(++currentTestGroupIndex);
+                else finishTest();
+            });
+            
+            checkGroupCompletion(group);
+            paneRight.scrollTop = 0;
+        }
+
+        function checkGroupCompletion(group) {
+            const btnNext = document.getElementById('btn-next-group');
+            if (!btnNext) return;
+            let allAnswered = group.questions.every(q => studentAnswers[q.id]);
+            btnNext.disabled = !allAnswered;
+        }
+
+        function updateProgressBar() {
+            let answeredCount = Object.keys(studentAnswers).length;
+            let totalQuestions = 30; 
+            document.getElementById('student-progress-bar').style.width = (answeredCount / totalQuestions) * 100 + '%';
+            document.getElementById('student-progress-text').innerText = answeredCount + ' / ' + totalQuestions;
+        }
+
+        function finishTest() {
+            document.getElementById('test-active-view').style.display = 'none';
+            document.getElementById('test-result-view').style.display = 'block';
+
+            let correctCount = 0;
+            let explainHtml = [];
+
+            testDatabase.forEach(group => {
+                explainHtml.push('<h3>' + group.instruction + '</h3>');
+                group.questions.forEach(q => {
+                    const userAns = studentAnswers[q.id];
+                    const isCorrect = userAns === q.answer;
+                    if (isCorrect) correctCount++;
+                    
+                    explainHtml.push('<div class="question-block" style="border-bottom: 1px solid #eee; padding-bottom:20px;">');
+                    explainHtml.push('<strong>Câu ' + q.id + ': <span class="meta-tag">' + q.meta + '</span></strong><br> ' + q.text + '<br>');
+                    explainHtml.push('<div style="color: ' + (isCorrect ? '#2e7d32' : '#d32f2f') + '; margin: 10px 0;">');
+                    explainHtml.push('<strong>Bạn chọn: </strong>' + (userAns || 'Không làm') + ' ' + (isCorrect ? '✅' : '❌'));
+                    explainHtml.push('</div>');
+                    explainHtml.push('<div class="correct-answer-text">Đáp án đúng: ' + q.answer + '</div>');
+                    explainHtml.push('<div class="explanation-box visible"><strong>Giải thích:</strong> ' + q.explain + '</div>');
+                    explainHtml.push('</div>');
+                });
+            });
+
+            document.getElementById('final-score').innerText = correctCount + '/30';
+            const explainContainer = document.getElementById('explanation-container');
+            explainContainer.innerHTML = explainHtml.join('');
+            explainContainer.style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('btn-view-explain').addEventListener('click', function() {
+                const container = document.getElementById('explanation-container');
+                const isHidden = container.style.display === 'none';
+                container.style.display = isHidden ? 'block' : 'none';
+                this.innerText = isHidden ? 'Ẩn giải thích' : 'Xem giải thích';
+            });
+            document.getElementById('btn-retry').addEventListener('click', () => {
+                document.getElementById('explanation-container').style.display = 'none';
+                document.getElementById('btn-view-explain').innerText = 'Xem giải thích';
+                initOnlineTest();
+            });
+            document.getElementById('btn-exit').addEventListener('click', () => navigateTo('page-2'));
+        });
+    </script>
+</body>
+</html>
