@@ -463,7 +463,7 @@
 <body>
     <header>
         <h1>Hệ Thống Thiết Kế Bài Thi ĐGNL Ngoại Ngữ</h1>
-        <p style="margin:0; font-size:14px;">(Powered by Google Gemini AI - Phiên bản Lọc dữ liệu thông minh)</p>
+        <p style="margin:0; font-size:14px;">(Powered by Google Gemini 2.5 AI)</p>
     </header>
 
     <main>
@@ -677,7 +677,7 @@
                         </div>
                         <div class="form-group full-width">
                             <label for="p4-ref">Bài báo mẫu hoặc Link nội dung (Cho AI đọc và viết lại)</label>
-                            <textarea id="p4-ref" rows="3" placeholder="Dán văn bản tham khảo hoặc chép text từ link báo vào đây..."></textarea>
+                            <textarea id="p4-ref" rows="3" placeholder="Ví dụ: Dán bài báo hoặc tóm tắt vào đây để AI viết thành bài đọc chuẩn B2..."></textarea>
                         </div>
                         <div class="form-group full-width">
                             <label for="p4-details">Dạng câu hỏi cần tạo</label>
@@ -707,7 +707,7 @@
                         </div>
                         <div class="form-group full-width">
                             <label for="p5-ref">Bài báo mẫu hoặc Link nội dung</label>
-                            <textarea id="p5-ref" rows="3" placeholder="Dán văn bản tham khảo hoặc chép text từ link báo vào đây..."></textarea>
+                            <textarea id="p5-ref" rows="3"></textarea>
                         </div>
                         <div class="form-group full-width">
                             <label for="p5-details">Dạng câu hỏi cần tạo</label>
@@ -785,7 +785,7 @@
             } catch (e) { return ''; }
         }
 
-        // TẠO PROMPT CHO AI: Chống ngắt dòng gây lỗi JSON
+        // TẠO PROMPT CHO AI
         function buildAIPrompt() {
             let prompt = `You are an expert English Test Creator. Create a multiple-choice English test based on the following specifications. Return ONLY a valid JSON object. Do not include markdown tags. Do not write HTML inside the JSON wrapper.
 
@@ -834,9 +834,10 @@ General Rules: Distractors must not be too obvious, do not use extreme words (al
             return prompt;
         }
 
-        // GỌI GOOGLE GEMINI API (Có cơ chế lọc lỗi trả về HTML)
+        // GỌI GOOGLE GEMINI API (SỬ DỤNG PHIÊN BẢN MỚI NHẤT GEMINI 2.5 FLASH)
         async function fetchFromGeminiAI(apiKey, promptText) {
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            // Cập nhật endpoint để gọi gemini-2.5-flash
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
             
             const response = await fetch(url, {
                 method: 'POST',
@@ -862,7 +863,7 @@ General Rules: Distractors must not be too obvious, do not use extreme words (al
             const data = await response.json();
             let rawText = data.candidates[0].content.parts[0].text;
             
-            // Xử lý làm sạch chuỗi: Loại bỏ thẻ markdown
+            // Xử lý làm sạch chuỗi JSON: Loại bỏ thẻ markdown HTML nếu AI bọc nhầm
             rawText = rawText.replace(/```json/gi, '').replace(/```html/gi, '').replace(/```/g, '').trim();
             
             // Lọc đúng cục JSON bên trong cùng để chống lỗi "Unexpected token <"
@@ -914,12 +915,13 @@ General Rules: Distractors must not be too obvious, do not use extreme words (al
                 }
             ];
             
-            // Đánh lại đúng ID cho chắc chắn
             let currentId = 31;
             testDatabase.forEach(group => {
-                group.questions.forEach(q => {
-                    q.id = currentId++;
-                });
+                if (group.questions) {
+                    group.questions.forEach(q => {
+                        q.id = currentId++;
+                    });
+                }
             });
         }
     </script>
@@ -978,7 +980,7 @@ General Rules: Distractors must not be too obvious, do not use extreme words (al
                     
                     const logMsg = document.createElement('li');
                     logMsg.style.color = '#3498db'; 
-                    logMsg.innerText = '⟳ Đang gửi toàn bộ yêu cầu đến máy chủ Google Gemini. Vui lòng đợi (khoảng 20 - 40 giây)...';
+                    logMsg.innerText = '⟳ Đang gửi toàn bộ yêu cầu đến máy chủ Google Gemini. Việc này sẽ mất khoảng 20 - 40 giây...';
                     logsContainer.appendChild(logMsg);
 
                     try {
@@ -1027,20 +1029,22 @@ General Rules: Distractors must not be too obvious, do not use extreme words (al
                         html.push('<div style="margin-bottom: 20px; padding: 20px; background: #fdfdfd; border: 1px solid #e0e0e0; border-radius: 4px; line-height: 1.8; text-align: justify;">' + group.passage + '</div>');
                     }
                     
-                    group.questions.forEach(q => {
-                        html.push('<div class="question-block">');
-                        html.push('<strong>Câu ' + q.id + ': </strong><br>');
-                        html.push(q.text);
-                        
-                        if (group.groupId !== 2) {
-                            html.push('<div class="options-grid">');
-                            for (const [key, val] of Object.entries(q.options)) {
-                                html.push('<div>' + key + '. ' + val + '</div>');
+                    if (group.questions) {
+                        group.questions.forEach(q => {
+                            html.push('<div class="question-block">');
+                            html.push('<strong>Câu ' + q.id + ': </strong><br>');
+                            html.push(q.text);
+                            
+                            if (group.groupId !== 2) {
+                                html.push('<div class="options-grid">');
+                                for (const [key, val] of Object.entries(q.options)) {
+                                    html.push('<div>' + key + '. ' + val + '</div>');
+                                }
+                                html.push('</div>');
                             }
                             html.push('</div>');
-                        }
-                        html.push('</div>');
-                    });
+                        });
+                    }
                 });
 
                 html.push('<div style="margin-top: 40px; border-top: 2px solid #B5523B; padding-top: 20px;">');
@@ -1050,7 +1054,9 @@ General Rules: Distractors must not be too obvious, do not use extreme words (al
                 
                 let allQuestions = [];
                 testDatabase.forEach(group => {
-                    group.questions.forEach(q => allQuestions.push(q));
+                    if (group.questions) {
+                        group.questions.forEach(q => allQuestions.push(q));
+                    }
                 });
 
                 const cols = 10; 
@@ -1122,22 +1128,24 @@ General Rules: Distractors must not be too obvious, do not use extreme words (al
 
             let rightHtml = [];
             rightHtml.push('<h3>' + group.instruction + '</h3>');
-            group.questions.forEach(q => {
-                rightHtml.push('<div class="student-question" id="sq-' + q.id + '">');
-                rightHtml.push('<strong>Câu ' + q.id + ': </strong><br> ' + q.text);
-                rightHtml.push('<div style="margin-top: 15px;">');
-                
-                for (const [key, val] of Object.entries(q.options)) {
-                    const isChecked = studentAnswers[q.id] === key ? 'checked' : '';
-                    rightHtml.push('<label class="student-option"><input type="radio" name="q-' + q.id + '" value="' + key + '" ' + isChecked + '>');
-                    if (group.groupId === 2) {
-                        rightHtml.push('<span><strong>' + key + '</strong></span></label>');
-                    } else {
-                        rightHtml.push('<span><strong>' + key + '.</strong> ' + val + '</span></label>');
+            if (group.questions) {
+                group.questions.forEach(q => {
+                    rightHtml.push('<div class="student-question" id="sq-' + q.id + '">');
+                    rightHtml.push('<strong>Câu ' + q.id + ': </strong><br> ' + q.text);
+                    rightHtml.push('<div style="margin-top: 15px;">');
+                    
+                    for (const [key, val] of Object.entries(q.options)) {
+                        const isChecked = studentAnswers[q.id] === key ? 'checked' : '';
+                        rightHtml.push('<label class="student-option"><input type="radio" name="q-' + q.id + '" value="' + key + '" ' + isChecked + '>');
+                        if (group.groupId === 2) {
+                            rightHtml.push('<span><strong>' + key + '</strong></span></label>');
+                        } else {
+                            rightHtml.push('<span><strong>' + key + '.</strong> ' + val + '</span></label>');
+                        }
                     }
-                }
-                rightHtml.push('</div></div>');
-            });
+                    rightHtml.push('</div></div>');
+                });
+            }
 
             const isLastGroup = index === testDatabase.length - 1;
             rightHtml.push('<div class="test-controls">');
@@ -1147,15 +1155,17 @@ General Rules: Distractors must not be too obvious, do not use extreme words (al
 
             paneRight.innerHTML = rightHtml.join('');
 
-            group.questions.forEach(q => {
-                document.querySelectorAll('input[name="q-' + q.id + '"]').forEach(radio => {
-                    radio.addEventListener('change', (e) => {
-                        studentAnswers[q.id] = e.target.value;
-                        checkGroupCompletion(group);
-                        updateProgressBar();
+            if (group.questions) {
+                group.questions.forEach(q => {
+                    document.querySelectorAll('input[name="q-' + q.id + '"]').forEach(radio => {
+                        radio.addEventListener('change', (e) => {
+                            studentAnswers[q.id] = e.target.value;
+                            checkGroupCompletion(group);
+                            updateProgressBar();
+                        });
                     });
                 });
-            });
+            }
 
             document.getElementById('btn-prev-group').addEventListener('click', () => {
                 if (currentTestGroupIndex > 0) renderTestGroup(--currentTestGroupIndex);
@@ -1172,6 +1182,7 @@ General Rules: Distractors must not be too obvious, do not use extreme words (al
         function checkGroupCompletion(group) {
             const btnNext = document.getElementById('btn-next-group');
             if (!btnNext) return;
+            if (!group.questions) return;
             let allAnswered = group.questions.every(q => studentAnswers[q.id]);
             btnNext.disabled = !allAnswered;
         }
@@ -1192,20 +1203,22 @@ General Rules: Distractors must not be too obvious, do not use extreme words (al
 
             testDatabase.forEach(group => {
                 explainHtml.push('<h3>' + group.instruction + '</h3>');
-                group.questions.forEach(q => {
-                    const userAns = studentAnswers[q.id];
-                    const isCorrect = userAns === q.answer;
-                    if (isCorrect) correctCount++;
-                    
-                    explainHtml.push('<div class="question-block" style="border-bottom: 1px solid #eee; padding-bottom:20px;">');
-                    explainHtml.push('<strong>Câu ' + q.id + ': </strong><br> ' + q.text + '<br>');
-                    explainHtml.push('<div style="color: ' + (isCorrect ? '#2e7d32' : '#d32f2f') + '; margin: 10px 0;">');
-                    explainHtml.push('<strong>Bạn chọn: </strong>' + (userAns || 'Không làm') + ' ' + (isCorrect ? '✅' : '❌'));
-                    explainHtml.push('</div>');
-                    explainHtml.push('<div class="correct-answer-text">Đáp án đúng: ' + q.answer + '</div>');
-                    explainHtml.push('<div class="explanation-box visible"><strong>Giải thích:</strong> ' + q.explain + '</div>');
-                    explainHtml.push('</div>');
-                });
+                if (group.questions) {
+                    group.questions.forEach(q => {
+                        const userAns = studentAnswers[q.id];
+                        const isCorrect = userAns === q.answer;
+                        if (isCorrect) correctCount++;
+                        
+                        explainHtml.push('<div class="question-block" style="border-bottom: 1px solid #eee; padding-bottom:20px;">');
+                        explainHtml.push('<strong>Câu ' + q.id + ': </strong><br> ' + q.text + '<br>');
+                        explainHtml.push('<div style="color: ' + (isCorrect ? '#2e7d32' : '#d32f2f') + '; margin: 10px 0;">');
+                        explainHtml.push('<strong>Bạn chọn: </strong>' + (userAns || 'Không làm') + ' ' + (isCorrect ? '✅' : '❌'));
+                        explainHtml.push('</div>');
+                        explainHtml.push('<div class="correct-answer-text">Đáp án đúng: ' + q.answer + '</div>');
+                        explainHtml.push('<div class="explanation-box visible"><strong>Giải thích:</strong> ' + q.explain + '</div>');
+                        explainHtml.push('</div>');
+                    });
+                }
             });
 
             document.getElementById('final-score').innerText = correctCount + '/30';
