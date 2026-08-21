@@ -436,16 +436,6 @@
             margin-bottom: 20px;
             display: none;
         }
-
-        .meta-tag {
-            background-color: #fcece9;
-            color: var(--primary-color);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 14px;
-            border: 1px solid #f2d2cc;
-            font-weight: normal;
-        }
         
         .answer-table {
             width: 100%;
@@ -473,7 +463,7 @@
 <body>
     <header>
         <h1>Hệ Thống Thiết Kế Bài Thi ĐGNL Ngoại Ngữ</h1>
-        <p style="margin:0; font-size:14px;">(Powered by Google Gemini AI)</p>
+        <p style="margin:0; font-size:14px;">(Powered by Google Gemini AI - Phiên bản Lọc dữ liệu thông minh)</p>
     </header>
 
     <main>
@@ -483,209 +473,189 @@
         <section id="page-1" class="active">
             <form id="teacher-form">
                 
-                <!-- HỘP NHẬP API KEY ĐỂ CHẠY TRÊN GITHUB PAGES -->
                 <div class="api-key-box">
                     <label style="color:#2980b9; font-weight:bold; display:block; margin-bottom:10px;">🔑 Cấu hình Trí Tuệ Nhân Tạo (Gemini API Key)</label>
-                    <p style="font-size:14px; margin-top:0;">Vì web chạy tĩnh trên GitHub Pages, hãy nhập khóa API của bạn để hệ thống tự động làm việc. Lấy khóa miễn phí tại <a href="https://aistudio.google.com/" target="_blank">Google AI Studio</a>.</p>
-                    <input type="password" id="gemini-api-key" placeholder="Dán mã API Key vào đây (ví dụ: AIzaSyB...)" required style="width: 100%; padding: 10px; border:1px solid #3498db; border-radius:4px;">
+                    <p style="font-size:14px; margin-top:0;">Dán khóa API của Google vào đây để hệ thống tự động sáng tác văn bản.</p>
+                    <input type="password" id="gemini-api-key" placeholder="Dán mã API Key vào đây..." required style="width: 100%; padding: 10px; border:1px solid #3498db; border-radius:4px;">
                 </div>
 
-                <!-- CÂU 31 - 35 -->
                 <fieldset>
                     <legend>Câu 31 – 35: Dạng điền vào chỗ trống</legend>
-                    
                     <div class="question-row">
                         <h4>Câu 31</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q31-topic" placeholder="Chủ đề (VD: Business)" value="Business" required>
+                            <input type="text" id="q31-topic" value="Business" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q31-type" placeholder="Thể loại (VD: Word form)" value="Word form" required>
+                            <input type="text" id="q31-type" value="Word form" required>
                         </div>
                     </div>
-                    
                     <div class="question-row">
                         <h4>Câu 32</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q32-topic" placeholder="Chủ đề (VD: Daily routine)" value="Daily routine" required>
+                            <input type="text" id="q32-topic" value="Daily routine" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q32-type" placeholder="Thể loại (VD: Simple present)" value="Simple present" required>
+                            <input type="text" id="q32-type" value="Simple present" required>
                         </div>
                     </div>
-
                     <div class="question-row">
                         <h4>Câu 33</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q33-topic" placeholder="Chủ đề" value="AI Ethics" required>
+                            <input type="text" id="q33-topic" value="AI Ethics" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q33-type" placeholder="Thể loại" value="Quantifiers" required>
+                            <input type="text" id="q33-type" value="Quantifiers" required>
                         </div>
                     </div>
-
                     <div class="question-row">
                         <h4>Câu 34</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q34-topic" placeholder="Chủ đề" value="Deforestation" required>
+                            <input type="text" id="q34-topic" value="Deforestation" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q34-type" placeholder="Thể loại" value="Comparison" required>
+                            <input type="text" id="q34-type" value="Comparison" required>
                         </div>
                     </div>
-
                     <div class="question-row">
                         <h4>Câu 35</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q35-topic" placeholder="Chủ đề" value="Family" required>
+                            <input type="text" id="q35-topic" value="Family" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q35-type" placeholder="Thể loại" value="Collocation" required>
+                            <input type="text" id="q35-type" value="Collocation" required>
                         </div>
                     </div>
                 </fieldset>
 
-                <!-- CÂU 36 - 40 -->
                 <fieldset>
                     <legend>Câu 36 – 40: Dạng Tìm lỗi sai</legend>
-                    
                     <div class="question-row">
                         <h4>Câu 36</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q36-topic" placeholder="Chủ đề" value="Smart home technology" required>
+                            <input type="text" id="q36-topic" value="Smart home technology" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q36-type" placeholder="Thể loại" value="S-V agreement" required>
+                            <input type="text" id="q36-type" value="S-V agreement" required>
                         </div>
                     </div>
-                    
                     <div class="question-row">
                         <h4>Câu 37</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q37-topic" placeholder="Chủ đề" value="Domestic violence" required>
+                            <input type="text" id="q37-topic" value="Domestic violence" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q37-type" placeholder="Thể loại" value="Articles" required>
+                            <input type="text" id="q37-type" value="Articles" required>
                         </div>
                     </div>
-
                     <div class="question-row">
                         <h4>Câu 38</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q38-topic" placeholder="Chủ đề" value="Diet" required>
+                            <input type="text" id="q38-topic" value="Diet" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q38-type" placeholder="Thể loại" value="Pronoun reference" required>
+                            <input type="text" id="q38-type" value="Pronoun reference" required>
                         </div>
                     </div>
-
                     <div class="question-row">
                         <h4>Câu 39</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q39-topic" placeholder="Chủ đề" value="Travel" required>
+                            <input type="text" id="q39-topic" value="Travel" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q39-type" placeholder="Thể loại" value="Causative form" required>
+                            <input type="text" id="q39-type" value="Causative form" required>
                         </div>
                     </div>
-
                     <div class="question-row">
                         <h4>Câu 40</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q40-topic" placeholder="Chủ đề" value="Global temperatures" required>
+                            <input type="text" id="q40-topic" value="Global temperatures" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q40-type" placeholder="Thể loại" value="Subjunctive" required>
+                            <input type="text" id="q40-type" value="Subjunctive" required>
                         </div>
                     </div>
                 </fieldset>
                 
-                <!-- CÂU 41 - 45 -->
                 <fieldset>
                     <legend>Câu 41 – 45: Dạng tìm câu đồng nghĩa</legend>
-                    
                     <div class="question-row">
                         <h4>Câu 41</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q41-topic" placeholder="Chủ đề" value="Professional training" required>
+                            <input type="text" id="q41-topic" value="Professional training" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q41-type" placeholder="Thể loại" value="so/such/too/enough" required>
+                            <input type="text" id="q41-type" value="so/such/too/enough" required>
                         </div>
                     </div>
-                    
                     <div class="question-row">
                         <h4>Câu 42</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q42-topic" placeholder="Chủ đề" value="Ancient temple" required>
+                            <input type="text" id="q42-topic" value="Ancient temple" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q42-type" placeholder="Thể loại" value="Reported speech" required>
+                            <input type="text" id="q42-type" value="Reported speech" required>
                         </div>
                     </div>
-
                     <div class="question-row">
                         <h4>Câu 43</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q43-topic" placeholder="Chủ đề" value="Passwords" required>
+                            <input type="text" id="q43-topic" value="Passwords" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q43-type" placeholder="Thể loại" value="Conditional sentence" required>
+                            <input type="text" id="q43-type" value="Conditional sentence" required>
                         </div>
                     </div>
-
                     <div class="question-row">
                         <h4>Câu 44</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q44-topic" placeholder="Chủ đề" value="Clean-up campaigns" required>
+                            <input type="text" id="q44-topic" value="Clean-up campaigns" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q44-type" placeholder="Thể loại" value="Passive voice" required>
+                            <input type="text" id="q44-type" value="Passive voice" required>
                         </div>
                     </div>
-
                     <div class="question-row">
                         <h4>Câu 45</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q45-topic" placeholder="Chủ đề" value="Public transport" required>
+                            <input type="text" id="q45-topic" value="Public transport" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q45-type" placeholder="Thể loại" value="Comparison" required>
+                            <input type="text" id="q45-type" value="Comparison" required>
                         </div>
                     </div>
                 </fieldset>
 
-                <!-- CÂU 46 - 52 (Đoạn văn) -->
                 <fieldset>
                     <legend>Câu 46 – 52: Đoạn văn đọc hiểu 1</legend>
                     <div class="form-grid">
@@ -707,7 +677,7 @@
                         </div>
                         <div class="form-group full-width">
                             <label for="p4-ref">Bài báo mẫu hoặc Link nội dung (Cho AI đọc và viết lại)</label>
-                            <textarea id="p4-ref" rows="3" placeholder="Ví dụ: Dán bài báo hoặc tóm tắt vào đây để AI viết thành bài đọc chuẩn B2..."></textarea>
+                            <textarea id="p4-ref" rows="3" placeholder="Dán văn bản tham khảo hoặc chép text từ link báo vào đây..."></textarea>
                         </div>
                         <div class="form-group full-width">
                             <label for="p4-details">Dạng câu hỏi cần tạo</label>
@@ -716,7 +686,6 @@
                     </div>
                 </fieldset>
 
-                <!-- CÂU 53 - 60 (Đoạn văn) -->
                 <fieldset>
                     <legend>Câu 53 – 60: Đoạn văn đọc hiểu 2</legend>
                     <div class="form-grid">
@@ -738,7 +707,7 @@
                         </div>
                         <div class="form-group full-width">
                             <label for="p5-ref">Bài báo mẫu hoặc Link nội dung</label>
-                            <textarea id="p5-ref" rows="3"></textarea>
+                            <textarea id="p5-ref" rows="3" placeholder="Dán văn bản tham khảo hoặc chép text từ link báo vào đây..."></textarea>
                         </div>
                         <div class="form-group full-width">
                             <label for="p5-details">Dạng câu hỏi cần tạo</label>
@@ -807,7 +776,6 @@
 
     <!-- Script: Lõi kết nối Gemini AI API & Tạo Đề -->
     <script>
-        const NEWLINE = String.fromCharCode(10);
         let testDatabase = [];
 
         function getField(id, type) {
@@ -817,14 +785,17 @@
             } catch (e) { return ''; }
         }
 
-        // TẠO PROMPT CHO AI
+        // TẠO PROMPT CHO AI: Chống ngắt dòng gây lỗi JSON
         function buildAIPrompt() {
-            let prompt = "You are an expert English Test Creator. Create a multiple-choice English test based on the following specifications. Return ONLY a valid JSON object. Do not include markdown tags like ```json. \n\n";
-            
-            prompt += "EXPECTED JSON STRUCTURE:\n";
-            prompt += `{"group1": [{"id":31, "text":"...", "options":{"A":"...", "B":"...", "C":"...", "D":"..."}, "answer":"A", "explain":"..."}], "group2": [...], "group3": [...], "group4": {"passage":"(HTML format with <br><br> for paragraphs)", "questions": [...]}, "group5": {"passage":"...", "questions": [...]}}\n\n`;
+            let prompt = `You are an expert English Test Creator. Create a multiple-choice English test based on the following specifications. Return ONLY a valid JSON object. Do not include markdown tags. Do not write HTML inside the JSON wrapper.
 
-            prompt += "--- Part 1: Fill in the blank (Q31-35) ---\n";
+EXPECTED JSON STRUCTURE:
+{"group1": [{"id":31, "text":"...", "options":{"A":"...", "B":"...", "C":"...", "D":"..."}, "answer":"A", "explain":"..."}], "group2": [...], "group3": [...], "group4": {"passage":"(HTML format with <br><br> for paragraphs)", "questions": []}, "group5": {"passage":"...", "questions": []}}
+
+General Rules: Distractors must not be too obvious, do not use extreme words (always, never, all), do not use information outside the text.
+
+--- Part 1: Fill in the blank (Q31-35) ---
+`;
             for(let i=31; i<=35; i++) {
                 prompt += `- Q${i}: Create a sentence about "${getField(i, 'topic')}". Test grammar/vocabulary point: "${getField(i, 'type')}". Provide 4 options.\n`;
             }
@@ -847,8 +818,8 @@
             const p4_ref = document.getElementById('p4-ref').value;
             const p4_details = document.getElementById('p4-details').value;
             prompt += `Write a reading passage about "${p4_topic}". CEFR Level: ${p4_level}. Word count: approx ${p4_words} words. `;
-            if (p4_ref) prompt += `Use this reference material/context to write the text: "${p4_ref}". `;
-            prompt += `After writing the passage, create 7 questions (Q46-52) focusing on: ${p4_details}.\n`;
+            if (p4_ref) prompt += `Use this reference material to rewrite the text: "${p4_ref}". `;
+            prompt += `Create 7 questions (Q46-52) focusing on: ${p4_details}.\n`;
 
             prompt += "\n--- Part 5: Reading Comprehension 2 (Q53-60) ---\n";
             const p5_level = document.getElementById('p5-level').value;
@@ -857,34 +828,56 @@
             const p5_ref = document.getElementById('p5-ref').value;
             const p5_details = document.getElementById('p5-details').value;
             prompt += `Write a reading passage about "${p5_topic}". CEFR Level: ${p5_level}. Word count: approx ${p5_words} words. `;
-            if (p5_ref) prompt += `Use this reference material/context: "${p5_ref}". `;
+            if (p5_ref) prompt += `Use this reference material to rewrite the text: "${p5_ref}". `;
             prompt += `Create 8 questions (Q53-60) focusing on: ${p5_details}.`;
 
             return prompt;
         }
 
-        // GỌI GOOGLE GEMINI API
+        // GỌI GOOGLE GEMINI API (Có cơ chế lọc lỗi trả về HTML)
         async function fetchFromGeminiAI(apiKey, promptText) {
-            const url = `[https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$](https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$){apiKey}`;
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            
             const response = await fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     contents: [{ parts: [{ text: promptText }] }],
                     generationConfig: { 
-                        response_mime_type: "application/json",
                         temperature: 0.7 
                     }
                 })
             });
 
             if (!response.ok) {
-                const err = await response.json();
-                throw new Error(err.error.message || "Lỗi xác thực API Key hoặc kết nối mạng.");
+                const errText = await response.text();
+                try {
+                    const errJson = JSON.parse(errText);
+                    throw new Error(errJson.error.message || `Lỗi API: ${response.status}`);
+                } catch(e) {
+                    throw new Error(`Lỗi kết nối (Mạng hoặc API Key sai). Chi tiết: ${errText.substring(0, 100)}...`);
+                }
             }
 
             const data = await response.json();
-            return JSON.parse(data.candidates[0].content.parts[0].text);
+            let rawText = data.candidates[0].content.parts[0].text;
+            
+            // Xử lý làm sạch chuỗi: Loại bỏ thẻ markdown
+            rawText = rawText.replace(/```json/gi, '').replace(/```html/gi, '').replace(/```/g, '').trim();
+            
+            // Lọc đúng cục JSON bên trong cùng để chống lỗi "Unexpected token <"
+            const firstBrace = rawText.indexOf('{');
+            const lastBrace = rawText.lastIndexOf('}');
+            if(firstBrace !== -1 && lastBrace !== -1) {
+                rawText = rawText.substring(firstBrace, lastBrace + 1);
+            }
+
+            try {
+                return JSON.parse(rawText);
+            } catch (e) {
+                console.error("Dữ liệu lỗi chưa thể Parse:", rawText);
+                throw new Error("AI trả về cấu trúc không khớp JSON. Vui lòng bấm tạo lại.");
+            }
         }
 
         function formatDataToDatabase(aiData) {
@@ -921,7 +914,7 @@
                 }
             ];
             
-            // Re-assign IDs properly just in case AI messes up the sequence
+            // Đánh lại đúng ID cho chắc chắn
             let currentId = 31;
             testDatabase.forEach(group => {
                 group.questions.forEach(q => {
@@ -981,11 +974,11 @@
                     
                     modal.classList.add('active');
                     logsContainer.innerHTML = '';
-                    modalTitle.innerHTML = '<span class="spinner" id="review-spinner"></span> AI đang viết đề thi...';
+                    modalTitle.innerHTML = '<span class="spinner" id="review-spinner"></span> AI đang suy nghĩ và viết đề thi...';
                     
                     const logMsg = document.createElement('li');
                     logMsg.style.color = '#3498db'; 
-                    logMsg.innerText = '⟳ Đang gửi yêu cầu đến máy chủ Google Gemini. Vui lòng đợi từ 20 - 45 giây...';
+                    logMsg.innerText = '⟳ Đang gửi toàn bộ yêu cầu đến máy chủ Google Gemini. Vui lòng đợi (khoảng 20 - 40 giây)...';
                     logsContainer.appendChild(logMsg);
 
                     try {
@@ -1006,7 +999,7 @@
 
                     } catch (error) {
                         modal.classList.remove('active');
-                        showSystemError('Lỗi AI: ' + error.message);
+                        showSystemError(error.message);
                         btnGenerate.disabled = false;
                     }
                 });
@@ -1116,7 +1109,6 @@
             const paneLeft = document.getElementById('pane-left');
             const paneRight = document.getElementById('pane-right');
             
-            // XỬ LÝ KHÔNG TÁCH ĐÔI MÀN HÌNH TỪ CÂU 31-45
             if (group.passage && group.passage.trim() !== '') {
                 paneLeft.style.display = 'block';
                 paneRight.style.maxWidth = 'none';
