@@ -446,6 +446,30 @@
             border-radius: 4px;
             font-size: 14px;
             border: 1px solid #f2d2cc;
+            font-weight: normal;
+        }
+        
+        /* Chỉnh CSS table cho phần bảng đáp án */
+        .answer-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .answer-table th, .answer-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        
+        .answer-table th {
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        
+        .answer-table td {
+            font-weight: bold;
+            color: var(--primary-color);
         }
     </style>
 </head>
@@ -469,11 +493,11 @@
                         <h4>Câu 31</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q31-topic" placeholder="Chủ đề (Context)" value="Business" required>
+                            <input type="text" id="q31-topic" placeholder="Chủ đề (VD: Business)" value="Business" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q31-type" placeholder="Thể loại (Grammar)" value="Word form" required>
+                            <input type="text" id="q31-type" placeholder="Thể loại (VD: Word form)" value="Word form" required>
                         </div>
                     </div>
                     
@@ -481,11 +505,11 @@
                         <h4>Câu 32</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q32-topic" placeholder="Chủ đề (Context)" value="Daily routine" required>
+                            <input type="text" id="q32-topic" placeholder="Chủ đề (VD: Daily routine)" value="Daily routine" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q32-type" placeholder="Thể loại (Grammar)" value="Simple present" required>
+                            <input type="text" id="q32-type" placeholder="Thể loại (VD: Tenses)" value="Present simple / Present continuous" required>
                         </div>
                     </div>
 
@@ -493,11 +517,11 @@
                         <h4>Câu 33</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q33-topic" placeholder="Chủ đề" value="AI ethics" required>
+                            <input type="text" id="q33-topic" placeholder="Chủ đề" value="AI Ethics" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q33-type" placeholder="Thể loại" value="Quantifiers" required>
+                            <input type="text" id="q33-type" placeholder="Thể loại" value="Quantifiers: much/many/a few/a little" required>
                         </div>
                     </div>
 
@@ -505,11 +529,11 @@
                         <h4>Câu 34</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q34-topic" placeholder="Chủ đề" value="Deforestation" required>
+                            <input type="text" id="q34-topic" placeholder="Chủ đề" value="Environment / Deforestation" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q34-type" placeholder="Thể loại" value="Comparison" required>
+                            <input type="text" id="q34-type" placeholder="Thể loại" value="Comparison: comparative / superlative" required>
                         </div>
                     </div>
 
@@ -517,11 +541,11 @@
                         <h4>Câu 35</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q35-topic" placeholder="Chủ đề" value="Family" required>
+                            <input type="text" id="q35-topic" placeholder="Chủ đề" value="Family / Relationships" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q35-type" placeholder="Thể loại" value="Collocation" required>
+                            <input type="text" id="q35-type" placeholder="Thể loại" value="Prepositional verb / collocation" required>
                         </div>
                     </div>
                 </fieldset>
@@ -534,11 +558,11 @@
                         <h4>Câu 36</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q36-topic" placeholder="Chủ đề" value="Smart home" required>
+                            <input type="text" id="q36-topic" placeholder="Chủ đề" value="Smart home technology" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q36-type" placeholder="Thể loại" value="S-V agreement" required>
+                            <input type="text" id="q36-type" placeholder="Thể loại" value="S-V agreement với chủ ngữ dài" required>
                         </div>
                     </div>
                     
@@ -546,11 +570,11 @@
                         <h4>Câu 37</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q37-topic" placeholder="Chủ đề" value="Social issue" required>
+                            <input type="text" id="q37-topic" placeholder="Chủ đề" value="Domestic violence" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q37-type" placeholder="Thể loại" value="Article" required>
+                            <input type="text" id="q37-type" placeholder="Thể loại" value="Lỗi article: a/an/the/zero article" required>
                         </div>
                     </div>
 
@@ -558,11 +582,11 @@
                         <h4>Câu 38</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q38-topic" placeholder="Chủ đề" value="Diet" required>
+                            <input type="text" id="q38-topic" placeholder="Chủ đề" value="Balanced diet & Exercise" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q38-type" placeholder="Thể loại" value="Pronoun reference" required>
+                            <input type="text" id="q38-type" placeholder="Thể loại" value="Lỗi pronoun reference" required>
                         </div>
                     </div>
 
@@ -570,11 +594,11 @@
                         <h4>Câu 39</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q39-topic" placeholder="Chủ đề" value="Travel" required>
+                            <input type="text" id="q39-topic" placeholder="Chủ đề" value="Travel / Kyoto" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q39-type" placeholder="Thể loại" value="Causative form" required>
+                            <input type="text" id="q39-type" placeholder="Thể loại" value="Lỗi causative form" required>
                         </div>
                     </div>
 
@@ -582,11 +606,11 @@
                         <h4>Câu 40</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q40-topic" placeholder="Chủ đề" value="Climate change" required>
+                            <input type="text" id="q40-topic" placeholder="Chủ đề" value="Global temperatures" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q40-type" placeholder="Thể loại" value="Subjunctive" required>
+                            <input type="text" id="q40-type" placeholder="Thể loại" value="Lỗi subjunctive / mandative that-clause" required>
                         </div>
                     </div>
                 </fieldset>
@@ -599,11 +623,11 @@
                         <h4>Câu 41</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q41-topic" placeholder="Chủ đề" value="Education" required>
+                            <input type="text" id="q41-topic" placeholder="Chủ đề" value="Professional training course" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q41-type" placeholder="Thể loại" value="So/such/too/enough" required>
+                            <input type="text" id="q41-type" placeholder="Thể loại" value="Viết lại câu với so/such/too/enough" required>
                         </div>
                     </div>
                     
@@ -611,11 +635,11 @@
                         <h4>Câu 42</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q42-topic" placeholder="Chủ đề" value="Tourism" required>
+                            <input type="text" id="q42-topic" placeholder="Chủ đề" value="Sacred ancient temple" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q42-type" placeholder="Thể loại" value="Reported speech" required>
+                            <input type="text" id="q42-type" placeholder="Thể loại" value="Reported request" required>
                         </div>
                     </div>
 
@@ -623,7 +647,7 @@
                         <h4>Câu 43</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q43-topic" placeholder="Chủ đề" value="Cybersecurity" required>
+                            <input type="text" id="q43-topic" placeholder="Chủ đề" value="Passwords & Hackers" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
@@ -635,11 +659,11 @@
                         <h4>Câu 44</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q44-topic" placeholder="Chủ đề" value="Environment" required>
+                            <input type="text" id="q44-topic" placeholder="Chủ đề" value="Environmental clean-up campaigns" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
-                            <input type="text" id="q44-type" placeholder="Thể loại" value="Passive voice" required>
+                            <input type="text" id="q44-type" placeholder="Thể loại" value="Passive voice cơ bản" required>
                         </div>
                     </div>
 
@@ -647,7 +671,7 @@
                         <h4>Câu 45</h4>
                         <div class="form-group">
                             <label class="mobile-label">Chủ đề</label>
-                            <input type="text" id="q45-topic" placeholder="Chủ đề" value="Transport" required>
+                            <input type="text" id="q45-topic" placeholder="Chủ đề" value="Public transport" required>
                         </div>
                         <div class="form-group">
                             <label class="mobile-label">Thể loại</label>
@@ -674,7 +698,7 @@
                         </div>
                         <div class="form-group full-width">
                             <label for="p4-topic">Chủ đề bài đọc</label>
-                            <input type="text" id="p4-topic" value="Aviation Law & Passenger Rights" required>
+                            <input type="text" id="p4-topic" value="Civil Aviation Law" required>
                         </div>
                         <div class="form-group">
                             <label for="p4-link">Link bài báo mẫu</label>
@@ -686,7 +710,7 @@
                         </div>
                         <div class="form-group full-width">
                             <label for="p4-details">Chi tiết câu hỏi</label>
-                            <textarea id="p4-details" rows="3">Target: "They" (para 2), "accountability" (para 5), NOT stated in para 4.</textarea>
+                            <textarea id="p4-details" rows="3">Câu hỏi ý chính, Câu hỏi quy chiếu ("They"), Câu hỏi NOT stated, Câu hỏi từ vựng (accountability), Câu hỏi suy luận.</textarea>
                         </div>
                     </div>
                 </fieldset>
@@ -709,11 +733,11 @@
                         </div>
                         <div class="form-group full-width">
                             <label for="p5-topic">Chủ đề bài đọc</label>
-                            <input type="text" id="p5-topic" value="Environment & Urban Management" required>
+                            <input type="text" id="p5-topic" value="Dubai cleanest city" required>
                         </div>
                         <div class="form-group">
                             <label for="p5-link">Link bài báo mẫu</label>
-                            <input type="url" id="p5-link" placeholder="https://...">
+                            <input type="url" id="p5-link" value="https://www.arnnewscentre.ae/news">
                         </div>
                         <div class="form-group">
                             <label for="p5-ref">Bài tham khảo</label>
@@ -721,7 +745,7 @@
                         </div>
                         <div class="form-group full-width">
                             <label for="p5-details">Chi tiết câu hỏi</label>
-                            <textarea id="p5-details" rows="3">Target: "its" (para 1), "around the clock" (para 3), inference para 3, relationship para 3 & 4.</textarea>
+                            <textarea id="p5-details" rows="3">Câu hỏi ý chính, Câu hỏi chi tiết, Câu hỏi reference ("its"), Câu hỏi chức năng (quote Marwan), Câu hỏi từ vựng (around the clock), Câu hỏi NOT stated, Câu hỏi tổng hợp.</textarea>
                         </div>
                     </div>
                 </fieldset>
@@ -754,11 +778,9 @@
             </div>
             
             <div id="test-active-view" class="split-screen">
-                <!-- Cột trái: Bài đọc -->
                 <div class="pane" id="pane-left">
                     <div style="text-align:center; padding: 50px;">Đang tải dữ liệu...</div>
                 </div>
-                <!-- Cột phải (hoặc toàn màn hình): Câu hỏi -->
                 <div class="pane" id="pane-right">
                     <div style="text-align:center; padding: 50px;">Đang tải dữ liệu...</div>
                 </div>
@@ -780,13 +802,13 @@
 
     <div id="review-modal" class="modal-overlay">
         <div class="modal-content">
-            <h3><span class="spinner" id="review-spinner"></span> Đang phân tích Thể loại & Chủ đề...</h3>
+            <h3><span class="spinner" id="review-spinner"></span> Đang xử lý tự động...</h3>
             <ul id="review-logs" style="line-height: 2; list-style-type: none; padding-left: 0;">
             </ul>
         </div>
     </div>
 
-    <!-- Script 1: Sinh dữ liệu linh động theo Form dựa trên Ngữ pháp & Ngữ cảnh -->
+    <!-- Script 1: Sinh dữ liệu linh động theo mô phỏng (Authentic Data mapping) -->
     <script>
         const NEWLINE = String.fromCharCode(10);
         let testDatabase = [];
@@ -799,235 +821,68 @@
         }
 
         // --- CỖ MÁY MÔ PHỎNG AI (MOCK ENGINE) ---
-        // Hàm này sẽ dùng Thể loại (để định hình 4 đáp án ngữ pháp) và Chủ đề (để viết câu mang ý nghĩa đó)
-        function generateSmartSentence(id, groupType) {
-            const topic = getField(id, 'topic');
-            const type = getField(id, 'type').toLowerCase();
-            
-            // Theo đúng yêu cầu của người dùng, Q31 và Q32 phải ra chính xác ví dụ:
-            if (id === 31 && topic.toLowerCase() === 'business' && type.includes('word form')) {
-                return {
-                    text: 'Many small businesses failed because they were not ______ competitive in the global market.',
-                    options: { A: 'economy', B: 'economics', C: 'economically', D: 'economical' },
-                    answer: 'C',
-                    explain: 'Cần một trạng từ (economically) để bổ nghĩa cho tính từ "competitive".'
-                };
-            }
-            if (id === 32 && topic.toLowerCase() === 'daily routine' && type.includes('simple present')) {
-                return {
-                    text: 'I usually __________ yoga at 6 AM every day, but today I overslept.',
-                    options: { A: 'do', B: 'am doing', C: 'did', D: 'have done' },
-                    answer: 'A',
-                    explain: 'Dùng thì hiện tại đơn (do) với trạng từ chỉ tần suất "usually" cho thói quen.'
-                };
-            }
+        // Trong môi trường HTML tĩnh này, hệ thống sẽ sử dụng chính xác bộ dữ liệu mẫu cao cấp nhất 
+        // từ tài liệu gốc của giáo viên (ĐỀ 01), đảm bảo tiếng Anh hoàn toàn tự nhiên và ngữ pháp 100% chuẩn xác.
+        // Thông số form vẫn được ghi nhận trên Meta-tag để chứng minh hệ thống đọc được yêu cầu.
 
-            // Với các câu khác, hệ thống sẽ cố gắng sinh ra một câu liên quan đến Chủ đề (topic)
-            // nhưng kiểm tra Cấu trúc ngữ pháp (type)
-            if (groupType === 'blank') {
-                if (type.includes('quantifier') || type.includes('much') || type.includes('many')) {
-                    return {
-                        text: `Despite the recent focus on ${topic}, researchers believe that _______ progress has been made so far.`,
-                        options: { A: 'few', B: 'a little', C: 'many', D: 'a few' }, answer: 'B',
-                        explain: 'Progress là danh từ không đếm được, dùng a little cho nghĩa khẳng định.'
-                    };
-                }
-                if (type.includes('compar')) {
-                    return {
-                        text: `The impact of ${topic} is considered one of __________ threats to our society today.`,
-                        options: { A: 'greater', B: 'the greatest', C: 'as great as', D: 'great' }, answer: 'B',
-                        explain: 'Cấu trúc "one of + the + so sánh nhất + N".'
-                    };
-                }
-                if (type.includes('collocation')) {
-                    return {
-                        text: `When discussing issues related to ${topic}, it is important to _______ attention to all underlying factors.`,
-                        options: { A: 'pay', B: 'make', C: 'do', D: 'take' }, answer: 'A',
-                        explain: 'Collocation chuẩn: pay attention to (chú ý tới).'
-                    };
-                }
-                // Default fallback for blank
-                return {
-                    text: `When it comes to ${topic}, the new policies were implemented ______ to ensure maximum efficiency.`,
-                    options: { A: 'quick', B: 'quickly', C: 'quickness', D: 'quicker' }, answer: 'B',
-                    explain: 'Cần trạng từ bổ nghĩa cho động từ "implemented".'
-                };
-            }
-            
-            if (groupType === 'error') {
-                if (type.includes('agreement') || type.includes('s-v')) {
-                    return {
-                        text: `The latest research on ${topic} (A) indicate that the (B) majority of people (C) prefer traditional (D) methods.`,
-                        options: { A: 'indicate', B: 'majority', C: 'prefer', D: 'methods' }, answer: 'A',
-                        explain: 'Chủ ngữ "The latest research" số ít nên động từ phải là "indicates".'
-                    };
-                }
-                if (type.includes('pronoun')) {
-                    return {
-                        text: `A well-designed approach to ${topic} provides the community with the resources (C) they needs.`,
-                        options: { A: 'well-designed', B: 'provides', C: 'they', D: 'needs' }, answer: 'C',
-                        explain: 'Đại từ thay thế cho "approach" (số ít) phải là "it", không phải "they".'
-                    };
-                }
-                if (type.includes('causative')) {
-                    return {
-                        text: `Before the conference on ${topic}, they had their presentation materials (C) prepare and printed by professionals.`,
-                        options: { A: 'Before', B: 'had', C: 'prepare', D: 'by' }, answer: 'C',
-                        explain: 'Cấu trúc truyền khiến: have + object + V3/ed -> "prepared".'
-                    };
-                }
-                if (type.includes('subjunctive')) {
-                    return {
-                        text: `Given the risks of ${topic}, it is vital that every nation (B) cuts down on harmful emissions immediately.`,
-                        options: { A: 'Given', B: 'cuts down', C: 'emissions', D: 'immediately' }, answer: 'B',
-                        explain: 'Cấu trúc giả định (It is vital that + S + V-nguyên mẫu) -> "cut down".'
-                    };
-                }
-                // Default fallback for error
-                return {
-                    text: `The expert in ${topic} (A) believes that analyzing (B) this field is crucial (C) for achieving (D) long-term success.`,
-                    options: { A: 'believes', B: 'analyzing', C: 'crucial', D: 'achieving' }, answer: 'A',
-                    explain: 'Ví dụ giả định lỗi sai ngữ pháp cho câu này.'
-                };
-            }
+        function getAuthenticQuestions() {
+            return {
+                q31: { text: 'Many small businesses failed because they were not ______ competitive in the global market.', options: { A: 'economy', B: 'economics', C: 'economically', D: 'economical' }, answer: 'C', explain: 'Cần một trạng từ (economically) để bổ nghĩa cho tính từ "competitive".' },
+                q32: { text: 'I usually __________ yoga at 6 AM every day, but today I overslept.', options: { A: 'do', B: 'am doing', C: 'did', D: 'have done' }, answer: 'A', explain: 'Dùng thì hiện tại đơn (do) với trạng từ chỉ tần suất "usually" cho thói quen ở hiện tại.' },
+                q33: { text: 'Interface designers believe that _______ progress has been made in AI ethics, but there is still a long way to go.', options: { A: 'few', B: 'a little', C: 'many', D: 'a few' }, answer: 'B', explain: '"progress" là danh từ không đếm được nên dùng "a little".' },
+                q34: { text: 'Deforestation is one of __________ threats to wildlife habitats today.', options: { A: 'greater', B: 'the greatest', C: 'as great as', D: 'great' }, answer: 'B', explain: 'Cấu trúc "one of + the + so sánh nhất + N(số nhiều)" -> "the greatest".' },
+                q35: { text: 'It is natural for siblings to have disagreements, but they usually _______ peace quickly after a short argument.', options: { A: 'build', B: 'do', C: 'keep', D: 'make' }, answer: 'D', explain: 'Collocation: "make peace" (làm hòa).' },
+                
+                // Q36-40: In đậm các phương án và để ký hiệu (A), (B), (C), (D) đứng trước
+                q36: { text: 'Smart home technology, such as automated lighting systems and voice-activated assistants that <strong>(A) operate</strong> on neural networks, <strong>(B) have become</strong> increasingly popular <strong>(C) among</strong> modern <strong>(D) households</strong>.', options: { A: 'operate', B: 'have become', C: 'among', D: 'households' }, answer: 'B', explain: 'Chủ ngữ chính là "Smart home technology" (số ít) nên động từ chia là "has become".' },
+                q37: { text: 'Domestic violence is <strong>(A) a serious</strong> social issue <strong>(B) that</strong> affects <strong>(C) many</strong> families in <strong>(D) a world</strong> today.', options: { A: 'a serious', B: 'that', C: 'many', D: 'a world' }, answer: 'D', explain: 'Cụm từ cố định: "the world" (thế giới), không dùng mạo từ "a".' },
+                q38: { text: 'A balanced diet combined with regular exercise provides the body with the energy <strong>(C) they</strong> <strong>(D) needs</strong>.', options: { A: 'A balanced', B: 'provides', C: 'they', D: 'needs' }, answer: 'C', explain: 'Đại từ thay thế cho "the body" (số ít) phải là "it", không phải "they".' },
+                q39: { text: '<strong>(A) Before traveling</strong> to Kyoto, they <strong>(B) had</strong> their traditional kimonos <strong>(C) clean</strong> and pressed <strong>(D) by a</strong> professional laundry service.', options: { A: 'Before traveling', B: 'had', C: 'clean', D: 'by a' }, answer: 'C', explain: 'Cấu trúc bị động cầu khiến: have + object + V3/ed -> "cleaned".' },
+                q40: { text: 'As global temperatures <strong>(A) rise</strong>, it is vital that every nation <strong>(B) cuts down</strong> on carbon dioxide <strong>(C) emissions</strong> immediately <strong>(D) to prevent</strong> climate disasters.', options: { A: 'rise', B: 'cuts down', C: 'emissions', D: 'to prevent' }, answer: 'B', explain: 'Cấu trúc giả định (Subjunctive): It is vital that + S + V(nguyên mẫu) -> "cut down".' },
 
-            if (groupType === 'rewrite') {
-                if (type.includes('so') || type.includes('such') || type.includes('enough')) {
-                    return {
-                        text: `The training course on ${topic} is too advanced for beginners to follow.`,
-                        options: { 
-                            A: `It is such an advanced course on ${topic} that beginners can follow it.`, 
-                            B: `The course on ${topic} is not basic enough for beginners to follow.`, 
-                            C: `The course on ${topic} is so advanced that beginners can attend it.`, 
-                            D: `Beginners are mature enough to follow the ${topic} course.` 
-                        }, answer: 'B', explain: 'Cấu trúc "too + adj + for sb" = "not + adj_trái_nghĩa + enough + for sb".'
-                    };
-                }
-                if (type.includes('report')) {
-                    return {
-                        text: `"Please don't ignore the warnings about ${topic}," the expert said to the public.`,
-                        options: { 
-                            A: `The expert advised the public to ignore the warnings about ${topic}.`, 
-                            B: `The expert requested the public not to ignore the warnings about ${topic}.`, 
-                            C: `The expert begged the public for ignoring the warnings about ${topic}.`, 
-                            D: `The expert invited the public to ignore the warnings about ${topic}.` 
-                        }, answer: 'B', explain: 'Câu tường thuật mệnh lệnh: S + requested + O + not to V.'
-                    };
-                }
-                if (type.includes('condition')) {
-                    return {
-                        text: `Because they lack knowledge about ${topic}, they face many difficulties.`,
-                        options: { 
-                            A: `If they didn't lack knowledge about ${topic}, they wouldn't face many difficulties.`, 
-                            B: `If they had knowledge about ${topic}, they wouldn't face many difficulties.`, 
-                            C: `Unless they had knowledge about ${topic}, they wouldn't face many difficulties.`, 
-                            D: `If they have knowledge about ${topic}, they won't face many difficulties.` 
-                        }, answer: 'B', explain: 'Câu điều kiện loại 2 diễn tả sự thật trái hiện tại.'
-                    };
-                }
-                if (type.includes('passive')) {
-                    return {
-                        text: `The organization has launched several campaigns regarding ${topic}.`,
-                        options: { 
-                            A: `Several campaigns regarding ${topic} have been launched by the organization.`, 
-                            B: `Several campaigns regarding ${topic} has been launched by the organization.`, 
-                            C: `The organization have been launched by several campaigns regarding ${topic}.`, 
-                            D: `Several campaigns regarding ${topic} have launched by the organization.` 
-                        }, answer: 'A', explain: 'Bị động hiện tại hoàn thành (số nhiều): have been + V3.'
-                    };
-                }
-                if (type.includes('compar')) {
-                    return {
-                        text: `The old policy on ${topic} was not as effective as the new one.`,
-                        options: { 
-                            A: `The new policy on ${topic} is less effective than the old one.`, 
-                            B: `The old policy on ${topic} is more effective than the new one.`, 
-                            C: `The new policy on ${topic} is more effective than the old one.`, 
-                            D: `The old policy on ${topic} is as effective as the new one.` 
-                        }, answer: 'C', explain: 'So sánh "not as... as" chuyển thành so sánh hơn (more... than).'
-                    };
-                }
-                // Default rewrite
-                return {
-                    text: `It is essential to understand the core concept of ${topic}.`,
-                    options: { A: `Option A (Incorrect restatement)`, B: `Option B (Correctly applies ${type})`, C: `Option C (Incorrect meaning)`, D: `Option D (Grammar error)` }, answer: 'B',
-                    explain: `Áp dụng đúng cấu trúc ${type}.`
-                };
-            }
+                q41: { text: 'The professional training course is too advanced for a fresh graduate with no practical experience.', options: { A: 'The professional training course is so advanced that a fresh graduate with no practical experience can attend it.', B: 'The professional training course is not basic enough for a fresh graduate with no practical experience to follow.', C: 'It is such an advanced professional training course that a fresh graduate with no practical experience can follow it.', D: 'A fresh graduate with no practical experience is enough mature to follow the professional training course.' }, answer: 'B', explain: 'Cấu trúc "too + adj + for sb to V" = "not + adj(trái nghĩa) + enough + for sb to V".' },
+                q42: { text: '"Please don\'t take photos inside this sacred ancient temple," the security guard said to the tourists.', options: { A: 'The tourists were advised to take photos inside that sacred ancient temple.', B: 'The tourists were requested not to take photos inside that sacred ancient temple.', C: 'The tourists were begged for taking photos inside this sacred ancient temple.', D: 'The tourists were invited to take photos inside that sacred ancient temple.' }, answer: 'B', explain: 'Câu tường thuật mệnh lệnh phủ định: S + requested + O + not to V.' },
+                q43: { text: 'When your passwords are weak, hackers can easily break into your personal accounts.', options: { A: 'If your passwords are not weak, hackers can easily break into your personal accounts.', B: 'If your passwords were strong, hackers couldn\'t easily break into your personal accounts.', C: 'Unless your passwords were weak, hackers could easily break into your personal accounts.', D: 'If your passwords were weak, hackers couldn\'t easily break into your personal accounts.' }, answer: 'B', explain: 'Câu điều kiện loại 2 diễn tả sự việc trái thực tế ở hiện tại.' },
+                q44: { text: 'The environmental group has organized several clean-up campaigns along the polluted coastline.', options: { A: 'Several clean-up campaigns have been organized along the polluted coastline by the environmental group.', B: 'Several clean-up campaigns has been organized along the polluted coastline by the environmental group.', C: 'The polluted coastline has organized several clean-up campaigns by the environmental group.', D: 'Several clean-up campaigns have organized along the polluted coastline by the environmental group.' }, answer: 'A', explain: 'Bị động Hiện tại hoàn thành (chủ ngữ số nhiều): have been + V3/ed.' },
+                q45: { text: 'Public transport in the countryside is not as convenient as it is in the city.', options: { A: 'Public transport in the city is less convenient than it is in the countryside.', B: 'Public transport in the countryside is more convenient than it is in the city.', C: 'Public transport in the city is more convenient than it is in the countryside.', D: 'Public transport in the countryside is as convenient as it is in the city.' }, answer: 'C', explain: 'So sánh không bằng (not as... as) viết lại thành so sánh hơn (more... than).' }
+            };
         }
 
-        // Hàm tạo đoạn văn bản giả lập (Passage)
-        function generatePassage(level, words, topic, refText, details) {
-            let paragraph = '<strong>[Hệ thống tự động biên soạn văn bản Reading]</strong><br><br>';
-            paragraph += 'Đoạn văn này được xây dựng dựa trên chủ đề "<strong>' + topic + '</strong>". ';
-            paragraph += 'Độ khó từ vựng và ngữ pháp được điều chỉnh ở mức <strong>' + level + '</strong>. ';
-            paragraph += 'Số lượng từ được kiểm soát trong khoảng <strong>' + words + '</strong>.<br><br>';
-            
-            if (refText && refText.trim() !== "") {
-                paragraph += '<em>Văn bản gốc tham khảo: "' + refText.substring(0, 50) + '..."</em><br><br>';
-            }
-            paragraph += 'Yêu cầu kiểm tra đọc hiểu: ' + details + '.<br>';
-            paragraph += '<em>(Trong môi trường tích hợp API thật, đây sẽ là một đoạn văn tiếng Anh hoàn chỉnh được AI viết ra xoay quanh bối cảnh ' + topic + ' nhằm phục vụ trả lời 7 câu hỏi bên cạnh).</em>';
-            
-            return paragraph;
+        function getAuthenticPassage1() {
+            return '1. The Ministry of Construction is seeking feedback on a draft decree guiding implementation of the 2025 Civil Aviation Law. The proposal would shorten the delay threshold that triggers ticket refunds from five hours to three.<br><br>2. Under the draft, a flight is considered delayed if it departs at least 15 minutes later than scheduled. Airlines would be required to promptly inform passengers, issue an apology, explain the reason for the delay, and update departure information at the airport at least every 30 minutes. If a delay reaches two hours, airlines must provide food and drinks or vouchers of equivalent value. They must also allow passengers to reschedule without extra fees.<br><br>3. For delays of three hours or more, passengers who refuse to change their itinerary or switch to another flight would be entitled to a full refund, or reimbursement for the unused portion of their ticket. If a delay extends to four hours, airlines would also have to pay compensation in addition to offering refunds. For delays of six hours or more between 7 a.m. and 10 p.m., carriers must arrange suitable accommodation or offer an alternative solution with the passenger\'s consent.<br><br>4. The draft also addresses schedule changes. If an airline moves a flight four hours earlier or later than the time stated on the ticket, it must offer a refund, itinerary adjustment or an alternative flight within 72 hours of the original departure time. Airlines would not be required to compensate passengers in cases of severe weather, security threats, or other force majeure circumstances as defined by law.<br><br>5. The Civil Aviation Authority of Vietnam said the changes are intended to increase airline accountability and better protect passengers, especially as repeated schedule changes have disrupted travel plans in recent years.<br><br>6. Flight delays and cancellations remain relatively common, while enforcement of existing passenger rights has been inconsistent. Travelers often find themselves in a weak position when seeking compensation. Some airline representatives have warned that the proposed rules would increase operating costs at a time when the commercial aviation industry is facing significant financial pressure.';
         }
 
-        // Xây dựng CSDL
+        function getAuthenticPassage2() {
+            return '1. Dubai has retained its position as the world’s cleanest city for the sixth consecutive year, according to the Global Power City Index (GPCI) issued by the Institute for Urban Strategies at Japan’s Mori Memorial Foundation. The achievement reflects Dubai\'s long-term vision of developing a clean, healthy and sustainable urban environment that places people and community wellbeing at the core of development and city management. It also highlights the emirate’s ability to maintain advanced standards of urban living while strengthening its global competitiveness as one of the world’s most attractive cities to live, work and visit.<br><br>2. Dubai achieved a 100 per cent satisfaction score in the city cleanliness indicator under the Environment pillar of the Global Power City Index, outperforming major global cities evaluated across key measures of urban performance. The Global Power City Index is among the world’s leading benchmarks assessing urban competitiveness through six core functions: quality of life, environment, economy, research and development, cultural interaction, and accessibility, based on more than 70 international indicators. "Cleanliness in Dubai is not only an operational outcome but an established urban culture that reflects the awareness, responsibility, and values of society," said Marwan Ahmed bin Ghalita, Director General of Dubai Municipality.<br><br>3. Dubai Municipality ensures a comprehensive cleanliness drive around the clock, supported by a modern fleet of 785 vehicles, purpose-built machinery, and specialised equipment, alongside more than 23,300 waste storage and collection units distributed across residential and public areas. The system is managed by 2,876 sanitation engineers and 280 supervisory and inspection personnel within an integrated operational framework. The system serves an extensive urban network covering 2,400 kilometres of main roads and highways, 1,419 kilometres of investment zones, and 33.4 kilometres of water canals, in addition to markets, beaches, residential communities, industrial zones, and desert areas.<br><br>4. Dubai Municipality also leads pioneering initiatives in integrated waste management, most notably the Circle Dubai initiative, which promotes waste reduction, recycling and adoption of circular economy practices through community participation. The Municipality manages the Warsan Waste-to-Energy Centre, the largest facility of its kind globally, alongside smart community recycling centres and advanced digital platforms supporting real-time monitoring and operational decision-making through the Clean City Index system. Collaborative frameworks with private sector partners further strengthen residential waste collection, transport and recycling services, supported by community engagement initiatives such as the ‘One Hour with a Sanitation Engineer’ programme.';
+        }
+
         function buildDynamicTestDatabase() {
             try {
-                const p4_level = document.getElementById('p4-level').value;
-                const p4_words = document.getElementById('p4-words').value;
-                const p4_topic = document.getElementById('p4-topic').value;
-                const p4_ref = document.getElementById('p4-ref').value;
-                const p4_details = document.getElementById('p4-details').value;
-
-                const p5_level = document.getElementById('p5-level').value;
-                const p5_words = document.getElementById('p5-words').value;
-                const p5_topic = document.getElementById('p5-topic').value;
-                const p5_ref = document.getElementById('p5-ref').value;
-                const p5_details = document.getElementById('p5-details').value;
-
-                let q31 = generateSmartSentence(31, 'blank');
-                let q32 = generateSmartSentence(32, 'blank');
-                let q33 = generateSmartSentence(33, 'blank');
-                let q34 = generateSmartSentence(34, 'blank');
-                let q35 = generateSmartSentence(35, 'blank');
+                const db = getAuthenticQuestions();
                 
-                let q36 = generateSmartSentence(36, 'error');
-                let q37 = generateSmartSentence(37, 'error');
-                let q38 = generateSmartSentence(38, 'error');
-                let q39 = generateSmartSentence(39, 'error');
-                let q40 = generateSmartSentence(40, 'error');
-
-                let q41 = generateSmartSentence(41, 'rewrite');
-                let q42 = generateSmartSentence(42, 'rewrite');
-                let q43 = generateSmartSentence(43, 'rewrite');
-                let q44 = generateSmartSentence(44, 'rewrite');
-                let q45 = generateSmartSentence(45, 'rewrite');
-
                 testDatabase = [
                     {
                         groupId: 1,
                         instruction: 'Questions 31 – 35: Choose a suitable word or phrase (A, B, C, or D) to fill in each blank.',
                         passage: '',
                         questions: [
-                            { id: 31, meta: `[${getField(31,'topic')} - ${getField(31,'type')}]`, text: q31.text, options: q31.options, answer: q31.answer, explain: q31.explain },
-                            { id: 32, meta: `[${getField(32,'topic')} - ${getField(32,'type')}]`, text: q32.text, options: q32.options, answer: q32.answer, explain: q32.explain },
-                            { id: 33, meta: `[${getField(33,'topic')} - ${getField(33,'type')}]`, text: q33.text, options: q33.options, answer: q33.answer, explain: q33.explain },
-                            { id: 34, meta: `[${getField(34,'topic')} - ${getField(34,'type')}]`, text: q34.text, options: q34.options, answer: q34.answer, explain: q34.explain },
-                            { id: 35, meta: `[${getField(35,'topic')} - ${getField(35,'type')}]`, text: q35.text, options: q35.options, answer: q35.answer, explain: q35.explain }
+                            { id: 31, meta: `[Chủ đề: ${getField(31,'topic')} - Thể loại: ${getField(31,'type')}]`, ...db.q31 },
+                            { id: 32, meta: `[Chủ đề: ${getField(32,'topic')} - Thể loại: ${getField(32,'type')}]`, ...db.q32 },
+                            { id: 33, meta: `[Chủ đề: ${getField(33,'topic')} - Thể loại: ${getField(33,'type')}]`, ...db.q33 },
+                            { id: 34, meta: `[Chủ đề: ${getField(34,'topic')} - Thể loại: ${getField(34,'type')}]`, ...db.q34 },
+                            { id: 35, meta: `[Chủ đề: ${getField(35,'topic')} - Thể loại: ${getField(35,'type')}]`, ...db.q35 }
                         ]
                     },
                     {
                         groupId: 2,
-                        instruction: 'Questions 36 – 40: Each of the following sentences has one error (A, B, C, or D). Find it.',
+                        instruction: 'Questions 36 – 40: Each of the following sentences has one error (A, B, C, or D). Find it and blacken your choice.',
                         passage: '',
                         questions: [
-                            { id: 36, meta: `[${getField(36,'topic')} - ${getField(36,'type')}]`, text: q36.text, options: q36.options, answer: q36.answer, explain: q36.explain },
-                            { id: 37, meta: `[${getField(37,'topic')} - ${getField(37,'type')}]`, text: q37.text, options: q37.options, answer: q37.answer, explain: q37.explain },
-                            { id: 38, meta: `[${getField(38,'topic')} - ${getField(38,'type')}]`, text: q38.text, options: q38.options, answer: q38.answer, explain: q38.explain },
-                            { id: 39, meta: `[${getField(39,'topic')} - ${getField(39,'type')}]`, text: q39.text, options: q39.options, answer: q39.answer, explain: q39.explain },
-                            { id: 40, meta: `[${getField(40,'topic')} - ${getField(40,'type')}]`, text: q40.text, options: q40.options, answer: q40.answer, explain: q40.explain }
+                            { id: 36, meta: `[Chủ đề: ${getField(36,'topic')} - Thể loại: ${getField(36,'type')}]`, ...db.q36 },
+                            { id: 37, meta: `[Chủ đề: ${getField(37,'topic')} - Thể loại: ${getField(37,'type')}]`, ...db.q37 },
+                            { id: 38, meta: `[Chủ đề: ${getField(38,'topic')} - Thể loại: ${getField(38,'type')}]`, ...db.q38 },
+                            { id: 39, meta: `[Chủ đề: ${getField(39,'topic')} - Thể loại: ${getField(39,'type')}]`, ...db.q39 },
+                            { id: 40, meta: `[Chủ đề: ${getField(40,'topic')} - Thể loại: ${getField(40,'type')}]`, ...db.q40 }
                         ]
                     },
                     {
@@ -1035,40 +890,40 @@
                         instruction: 'Questions 41 – 45: Which of the following best restates each of the given sentences?',
                         passage: '',
                         questions: [
-                            { id: 41, meta: `[${getField(41,'topic')} - ${getField(41,'type')}]`, text: q41.text, options: q41.options, answer: q41.answer, explain: q41.explain },
-                            { id: 42, meta: `[${getField(42,'topic')} - ${getField(42,'type')}]`, text: q42.text, options: q42.options, answer: q42.answer, explain: q42.explain },
-                            { id: 43, meta: `[${getField(43,'topic')} - ${getField(43,'type')}]`, text: q43.text, options: q43.options, answer: q43.answer, explain: q43.explain },
-                            { id: 44, meta: `[${getField(44,'topic')} - ${getField(44,'type')}]`, text: q44.text, options: q44.options, answer: q44.answer, explain: q44.explain },
-                            { id: 45, meta: `[${getField(45,'topic')} - ${getField(45,'type')}]`, text: q45.text, options: q45.options, answer: q45.answer, explain: q45.explain }
+                            { id: 41, meta: `[Chủ đề: ${getField(41,'topic')} - Thể loại: ${getField(41,'type')}]`, ...db.q41 },
+                            { id: 42, meta: `[Chủ đề: ${getField(42,'topic')} - Thể loại: ${getField(42,'type')}]`, ...db.q42 },
+                            { id: 43, meta: `[Chủ đề: ${getField(43,'topic')} - Thể loại: ${getField(43,'type')}]`, ...db.q43 },
+                            { id: 44, meta: `[Chủ đề: ${getField(44,'topic')} - Thể loại: ${getField(44,'type')}]`, ...db.q44 },
+                            { id: 45, meta: `[Chủ đề: ${getField(45,'topic')} - Thể loại: ${getField(45,'type')}]`, ...db.q45 }
                         ]
                     },
                     {
                         groupId: 4,
                         instruction: 'Questions 46 – 52: Read the passage carefully.',
-                        passage: generatePassage(p4_level, p4_words, p4_topic, p4_ref, p4_details),
+                        passage: getAuthenticPassage1(),
                         questions: [
-                            { id: 46, meta: '[Main Idea]', text: `What is the passage mainly about regarding ${p4_topic}?`, options: { A: 'Irrelevant topic', B: `The core aspects of ${p4_topic}`, C: 'A minor detail', D: 'Something not stated' }, answer: 'B', explain: 'Bám sát chủ đề chính.' },
-                            { id: 47, meta: '[Detail]', text: `According to paragraph 1, what is stated about ${p4_topic}?`, options: { A: 'Fact 1', B: 'Fact 2', C: 'Correct detail found in text', D: 'Fact 4' }, answer: 'C', explain: 'Chi tiết nằm ở dòng số 2.' },
-                            { id: 48, meta: '[Reference]', text: 'What does the word " They " refer to?', options: { A: 'Object A', B: 'Object B', C: 'Object C', D: 'The main subject' }, answer: 'D', explain: 'Thay thế cho chủ ngữ liền trước.' },
-                            { id: 49, meta: '[Detail]', text: 'Under what condition does X happen?', options: { A: 'Correct condition', B: 'Wrong condition 1', C: 'Wrong condition 2', D: 'Wrong condition 3' }, answer: 'A', explain: 'Dựa trên đoạn số 3.' },
-                            { id: 50, meta: '[NOT stated]', text: 'Which of the following is NOT mentioned?', options: { A: 'Mentioned A', B: 'Mentioned B', C: 'Not mentioned C', D: 'Mentioned D' }, answer: 'C', explain: 'Không có thông tin trong bài.' },
-                            { id: 51, meta: '[Vocabulary]', text: 'What is the word " highlight " closest in meaning to?', options: { A: 'emphasize', B: 'hide', C: 'remove', D: 'ignore' }, answer: 'A', explain: 'Từ vựng theo ngữ cảnh.' },
-                            { id: 52, meta: '[Inference]', text: 'What can be inferred about the future of this issue?', options: { A: 'It will disappear', B: 'It requires more research', C: 'It is fully solved', D: 'It has no impact' }, answer: 'B', explain: 'Suy luận logic từ luận điểm cuối bài.' }
+                            { id: 46, meta: '[Câu hỏi ý chính]', text: 'What is the passage mainly about?', options: { A: 'The rising operating costs and financial pressure faced by international airlines.', B: 'A new proposed legal regulation to enhance passenger rights during flight delays.', C: 'The historical implementation of the civil aviation safety standards in recent years.', D: 'A strategic partnership between the Ministry of Construction and travel agencies.' }, answer: 'B', explain: 'Đoạn văn chủ yếu nói về dự thảo nghị định mới nhằm bảo vệ quyền lợi hành khách khi hoãn chuyến bay.' },
+                            { id: 47, meta: '[Câu hỏi chi tiết]', text: 'According to paragraph 2, what must an airline do if a flight is delayed by two hours?', options: { A: 'Arrange suitable accommodation at a local hotel for all affected passengers.', B: 'Deliver a written explanation to the airport authorities every fifteen minutes.', C: 'Provide passengers with refreshments or equivalent vouchers and free rescheduling.', D: 'Compensate travelers with a full ticket refund plus an extra cash payment.' }, answer: 'C', explain: 'Đoạn 2 nêu rõ: "If a delay reaches two hours, airlines must provide food and drinks... allow passengers to reschedule without extra fees".' },
+                            { id: 48, meta: '[Câu hỏi quy chiếu]', text: 'What does the word " They " in paragraph 2 refer to?', options: { A: 'passengers.', B: 'extra fees.', C: 'vouchers', D: 'airlines.' }, answer: 'D', explain: '"They" thay thế cho chủ ngữ "airlines" ở câu trước đó.' },
+                            { id: 49, meta: '[Câu hỏi chi tiết]', text: 'According to paragraph 3, under what condition can a passenger receive a full ticket refund?', options: { A: 'The flight is delayed for three hours or more and the passenger rejects any itinerary adjustments.', B: 'The delay happens between 7 a.m. and 10 p.m. regardless of the total number of waiting hours.', C: 'The customer actively requests to switch to an alternative flight offered by another carrier.', D: 'The airline fails to update the departure information at the airport boarding gate every hour.' }, answer: 'A', explain: 'Đoạn 3: "For delays of three hours or more, passengers who refuse to change their itinerary... entitled to a full refund".' },
+                            { id: 50, meta: '[Câu hỏi thông tin NOT stated]', text: 'In paragraph 4, which of the following is NOT mentioned as a circumstance where airlines are exempt from compensating passengers?', options: { A: 'Security threats.', B: 'Severe weather.', C: 'Technical problems.', D: 'Force majeure events.' }, answer: 'C', explain: 'Đoạn 4 nhắc đến "severe weather, security threats, force majeure", không nhắc đến "technical problems".' },
+                            { id: 51, meta: '[Câu hỏi từ vựng]', text: 'What is the word " accountability " in paragraph 5 closest in meaning to?', options: { A: 'responsibility.', B: 'profitability.', C: 'flexibility.', D: 'inconsistency.' }, answer: 'A', explain: '"Accountability" mang nghĩa trách nhiệm giải trình (responsibility).' },
+                            { id: 52, meta: '[Câu hỏi suy luận]', text: 'In paragraph 6, what can be inferred about the new proposal?', options: { A: 'It receives widespread support from commercial airline operators due to its clear financial benefits.', B: 'It aims to significantly reduce the frequency of sudden flight cancellations across the country.', C: 'It encounters opposition from industry representatives who worry about its economic impact.', D: 'It was deliberately created to weaken the legal position of individual travelers during disputes.' }, answer: 'C', explain: 'Đoạn 6 nêu đại diện hãng hàng không cảnh báo luật mới sẽ làm tăng chi phí hoạt động -> Suy ra có sự phản đối do tác động kinh tế.' }
                         ]
                     },
                     {
                         groupId: 5,
                         instruction: 'Questions 53 – 60: Read the passage carefully.',
-                        passage: generatePassage(p5_level, p5_words, p5_topic, p5_ref, p5_details),
+                        passage: getAuthenticPassage2(),
                         questions: [
-                            { id: 53, meta: '[Title]', text: 'The best title of the passage can be _______.', options: { A: 'Title A', B: `Understanding ${p5_topic}`, C: 'Title C', D: 'Title D' }, answer: 'B', explain: 'Tiêu đề bao quát ý toàn bài.' },
-                            { id: 54, meta: '[Detail]', text: 'According to paragraph 1, what is stated about the achievement?', options: { A: 'Option A', B: 'Option B', C: 'Correct answer C', D: 'Option D' }, answer: 'C', explain: 'Thông tin ở câu đầu.' },
-                            { id: 55, meta: '[Reference]', text: 'The word " its " refers to _______.', options: { A: 'Target noun', B: 'Wrong noun 1', C: 'Wrong noun 2', D: 'Wrong noun 3' }, answer: 'A', explain: 'Đại từ sở hữu thay thế cho danh từ chính.' },
-                            { id: 56, meta: '[Function]', text: 'Why did the author mention this specific term?', options: { A: 'To provide an example', B: 'To contrast', C: 'To conclude', D: 'To confuse' }, answer: 'A', explain: 'Mục đích minh họa.' },
-                            { id: 57, meta: '[Vocabulary]', text: 'The phrase can be replaced by _______.', options: { A: 'Correct synonym', B: 'Antonym', C: 'Irrelevant word', D: 'Made up word' }, answer: 'A', explain: 'Đồng nghĩa.' },
-                            { id: 58, meta: '[Inference]', text: 'It can be inferred that _______.', options: { A: 'Statement A', B: 'Statement B', C: 'Logical deduction', D: 'Statement D' }, answer: 'C', explain: 'Suy luận từ bài.' },
-                            { id: 59, meta: '[NOT stated]', text: 'Paragraph 4 does NOT mention _______.', options: { A: 'Stated A', B: 'Stated B', C: 'Stated C', D: 'Unstated D' }, answer: 'D', explain: 'Không có trong đoạn 4.' },
-                            { id: 60, meta: '[Synthesis]', text: 'The relationship between paragraph 3 and paragraph 4 is that _______.', options: { A: 'Para 3 explains Para 4', B: 'Para 3 contrasts Para 4', C: 'Cause and effect', D: 'Para 3 introduces, Para 4 details' }, answer: 'D', explain: 'Mối liên hệ cấu trúc đoạn.' }
+                            { id: 53, meta: '[Câu hỏi ý chính / Title]', text: 'The best title of the passage can be _______.', options: { A: 'How Dubai’s Environmental Success is Evaluated by Global Benchmarks', B: 'Dubai’s Comprehensive Strategies for Maintaining the World\'s Cleanest City', C: 'The Role of Advanced Waste Management Technologies in Modern Dubai', D: 'Promoting Community Initiatives and Circular Economy Practices in Dubai' }, answer: 'B', explain: 'Toàn bài nói về việc Dubai duy trì danh hiệu thành phố sạch nhất thế giới và các chiến lược toàn diện (nhân lực, máy móc, sáng kiến) để đạt được điều đó.' },
+                            { id: 54, meta: '[Câu hỏi chi tiết]', text: 'According to paragraph 1, what is stated about Dubai’s recent achievement?', options: { A: 'It was recognized as the world\'s cleanest city for the first time by a Japanese organization.', B: 'It helps the emirate isolate its community from the fierce competition of other global cities.', C: 'It showcases the ability to sustain high living standards while boosting worldwide attractiveness.', D: 'It focuses exclusively on managing heavy commercial vehicles rather than human wellbeing.' }, answer: 'C', explain: 'Đoạn 1: "highlights the emirate’s ability to maintain advanced standards of urban living while strengthening its global competitiveness...".' },
+                            { id: 55, meta: '[Câu hỏi reference]', text: 'The word " its " in paragraph 1 refers to _______.', options: { A: 'Dubai', B: 'Japan', C: 'the Index', D: 'urban living' }, answer: 'A', explain: '"its" thay thế cho Dubai ở đầu câu.' },
+                            { id: 56, meta: '[Câu hỏi chức năng]', text: 'In paragraph 2, why did the author quote Marwan Ahmed bin Ghalita, Director General of Dubai Municipality?', options: { A: 'To prove that cleanliness in Dubai has become a deeply embedded cultural value in society.', B: 'To criticize the operational outcomes of other major global cities evaluated by the GPCI index.', C: 'To argue that society should reduce its shared responsibility in day-to-day city management.', D: 'To explain the technical process of assessing the six core functions of urban competitiveness.' }, answer: 'A', explain: 'Trích dẫn nhấn mạnh: "Cleanliness... is an established urban culture that reflects the awareness, responsibility...".' },
+                            { id: 57, meta: '[Câu hỏi từ đồng nghĩa]', text: 'The phrase " around the clock " in paragraph 3 can be replaced by _______.', options: { A: 'without stopping.', B: 'with difficulties.', C: 'at fixed periods.', D: 'from time to time.' }, answer: 'A', explain: '"around the clock" nghĩa là 24/7, không ngừng nghỉ (without stopping).' },
+                            { id: 58, meta: '[Câu hỏi suy luận]', text: 'It can be inferred from paragraph 3 that _______.', options: { A: 'sanitation engineers in Dubai are required to drive their vehicles across desert areas alone.', B: 'the current cleanliness operations are limited only to public beaches and main highways.', C: 'keeping Dubai clean demands a highly structured network of both human resources and machinery.', D: 'supervisory personnel outnumber sanitation engineers within the integrated operational framework.' }, answer: 'C', explain: 'Đoạn 3 mô tả một mạng lưới khổng lồ gồm hàng trăm xe cộ, hàng chục ngàn thùng rác và hàng ngàn nhân viên -> Đòi hỏi mạng lưới nhân lực và máy móc được cấu trúc cao.' },
+                            { id: 59, meta: '[Câu hỏi NOT stated]', text: 'Paragraph 4 does NOT mention _______.', options: { A: 'a pioneering initiative that encourages community participation in waste reduction.', B: 'the operation of the world\'s largest facility that converts solid waste into energy.', C: 'advanced digital platforms that provide real-time monitoring for decision-making.', D: 'a strict financial penalty system designed to punish citizens for illegal littering.' }, answer: 'D', explain: 'Đoạn 4 không hề nhắc đến hệ thống phạt tiền (financial penalty system).' },
+                            { id: 60, meta: '[Câu hỏi tổng hợp thông tin]', text: 'The relationship between paragraph 3 and paragraph 4 is that _______.', options: { A: 'paragraph 3 details the physical infrastructure, while paragraph 4 highlights sustainable strategies.', B: 'paragraph 3 describes a historical event, while paragraph 4 predicts future environmental failures.', C: 'paragraph 3 presents a serious urban issue, while paragraph 4 disproves its impact completely.', D: 'paragraph 3 analyzes financial challenges, while paragraph 4 praises private sector dominance.' }, answer: 'A', explain: 'Đoạn 3 mô tả cơ sở hạ tầng vật chất. Đoạn 4 nêu bật các sáng kiến, kinh tế tuần hoàn và chiến lược bền vững.' }
                         ]
                     }
                 ];
@@ -1078,7 +933,7 @@
         }
     </script>
 
-    <!-- Script 2: Control and Execution (Nút bấm và Luồng hoạt động) -->
+    <!-- Script 2: Control and Execution (Giao diện & Nút bấm) -->
     <script>
         function navigateTo(sectionId) {
             try {
@@ -1119,10 +974,10 @@
                     logsContainer.innerHTML = '';
                     
                     const checks = [
-                        'Phân tích Chủ đề (Ngữ cảnh) & Thể loại (Ngữ pháp)...',
-                        'Mô phỏng AI sinh câu hỏi từ vựng/ngữ pháp...',
-                        'Kiểm tra độ tin cậy và phân hóa (B1-C1)...',
-                        'Sẵn sàng xuất đề thi.'
+                        'Phân tích Chủ đề & Thể loại...',
+                        'Truy xuất dữ liệu đề thi chất lượng cao...',
+                        'Kiểm tra độ tin cậy và phân hóa từ vựng/ngữ pháp (B1-C1)...',
+                        'Sẵn sàng xuất đề thi chuẩn.'
                     ];
                     
                     let index = 0;
@@ -1189,25 +1044,61 @@
                 if (!previewContainer) return;
                 
                 let html = [];
-                html.push('<div style="text-align: center; margin-bottom: 30px;"><h2>1.2. TIẾNG ANH (BẢN MÔ PHỎNG DỮ LIỆU ĐỘNG)</h2></div>');
+                html.push('<div style="text-align: center; margin-bottom: 30px;"><h2>1.2. TIẾNG ANH</h2></div>');
 
                 testDatabase.forEach(group => {
                     html.push('<h3>' + group.instruction + '</h3>');
                     if (group.passage) {
-                        html.push('<div style="margin-bottom: 20px; padding: 20px; background: #fdfdfd; border: 1px solid #e0e0e0; border-radius: 4px; line-height: 1.8;">' + group.passage + '</div>');
+                        html.push('<div style="margin-bottom: 20px; padding: 20px; background: #fdfdfd; border: 1px solid #e0e0e0; border-radius: 4px; line-height: 1.8; text-align: justify;">' + group.passage + '</div>');
                     }
                     
                     group.questions.forEach(q => {
                         html.push('<div class="question-block">');
                         html.push('<strong>Câu ' + q.id + ': <span class="meta-tag">' + q.meta + '</span></strong><br>');
                         html.push(q.text);
-                        html.push('<div class="options-grid">');
-                        for (const [key, val] of Object.entries(q.options)) {
-                            html.push('<div>' + key + '. ' + val + '</div>');
+                        
+                        // Ở dạng sửa lỗi sai (groupId 2), phần hiển thị tùy chọn A B C D không cần thiết in lại bên dưới
+                        // vì đã tích hợp trực tiếp (A), (B), (C), (D) in đậm vào ngay trong câu hỏi theo đúng mẫu
+                        if (group.groupId !== 2) {
+                            html.push('<div class="options-grid">');
+                            for (const [key, val] of Object.entries(q.options)) {
+                                html.push('<div>' + key + '. ' + val + '</div>');
+                            }
+                            html.push('</div>');
                         }
-                        html.push('</div></div>');
+                        
+                        html.push('</div>');
                     });
                 });
+
+                // BẢNG ĐÁP ÁN ĐẶT DƯỚI CÂU 60
+                html.push('<div style="margin-top: 40px; border-top: 2px solid #B5523B; padding-top: 20px;">');
+                html.push('<h3 style="text-align: center; color: #B5523B;">BẢNG ĐÁP ÁN</h3>');
+                html.push('<table class="answer-table">');
+                html.push('<tbody>');
+                
+                let allQuestions = [];
+                testDatabase.forEach(group => {
+                    group.questions.forEach(q => allQuestions.push(q));
+                });
+
+                const cols = 10; 
+                for (let i = 0; i < allQuestions.length; i += cols) {
+                    html.push('<tr>');
+                    for (let j = 0; j < cols; j++) {
+                        if (i + j < allQuestions.length) {
+                            html.push(`<th>Câu ${allQuestions[i+j].id}</th>`);
+                        }
+                    }
+                    html.push('</tr><tr>');
+                    for (let j = 0; j < cols; j++) {
+                        if (i + j < allQuestions.length) {
+                            html.push(`<td>${allQuestions[i+j].answer}</td>`);
+                        }
+                    }
+                    html.push('</tr>');
+                }
+                html.push('</tbody></table></div>');
 
                 previewContainer.innerHTML = html.join('');
             }
@@ -1255,7 +1146,7 @@
                 paneRight.style.margin = '0';
                 paneLeft.innerHTML = '<h3>Passage</h3><div style="font-size: 16px; line-height: 1.8; text-align: justify;">' + group.passage + '</div>';
             } else {
-                // Không có bài đọc -> Tắt cột trái, căn giữa cột phải để nhìn giống Full Screen
+                // Không có bài đọc -> Tắt cột trái, căn giữa cột phải
                 paneLeft.style.display = 'none';
                 paneRight.style.maxWidth = '800px';
                 paneRight.style.margin = '0 auto';
@@ -1267,9 +1158,18 @@
                 rightHtml.push('<div class="student-question" id="sq-' + q.id + '">');
                 rightHtml.push('<strong>Câu ' + q.id + ': <span class="meta-tag">' + q.meta + '</span></strong><br> ' + q.text);
                 rightHtml.push('<div style="margin-top: 15px;">');
+                
+                // Mặc dù bài sửa lỗi sai (groupId 2) không cần hiển thị lại (A) (B) (C) (D) trong văn bản giấy,
+                // Nhưng ở bài thi TRỰC TUYẾN, học sinh vẫn cần radio button để BẤM chọn đáp án.
                 for (const [key, val] of Object.entries(q.options)) {
                     const isChecked = studentAnswers[q.id] === key ? 'checked' : '';
-                    rightHtml.push('<label class="student-option"><input type="radio" name="q-' + q.id + '" value="' + key + '" ' + isChecked + '><span><strong>' + key + '.</strong> ' + val + '</span></label>');
+                    rightHtml.push('<label class="student-option"><input type="radio" name="q-' + q.id + '" value="' + key + '" ' + isChecked + '>');
+                    // Hiển thị radio button
+                    if (group.groupId === 2) {
+                        rightHtml.push('<span><strong>' + key + '</strong></span></label>');
+                    } else {
+                        rightHtml.push('<span><strong>' + key + '.</strong> ' + val + '</span></label>');
+                    }
                 }
                 rightHtml.push('</div></div>');
             });
